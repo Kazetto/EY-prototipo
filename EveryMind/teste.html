@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login com Firebase</title>
+  <title>Login e Autenticação com Firebase</title>
   <!-- Inclua o Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
   <script>
     // Configure o SDK do Firebase com suas credenciais
-    const firebaseConfig = {
-        apiKey: "AIzaSyB41DJ0DWEoJb8P5OQPIYTFHO9g4JHAQo8",
-        authDomain: "everymind-proto.firebaseapp.com",
-        projectId: "everymind-proto",
-        storageBucket: "everymind-proto.appspot.com",
-        messagingSenderId: "158822858584",
-        appId: "1:158822858584:web:7bce6a8c8cb22c267f2f2d"
-      };
-      
+    var firebaseConfig = {
+      apiKey: "AIzaSyB41DJ0DWEoJb8P5OQPIYTFHO9g4JHAQo8",
+      authDomain: "everymind-proto.firebaseapp.com",
+      projectId: "everymind-proto",
+      storageBucket: "everymind-proto.appspot.com"
+    };
     firebase.initializeApp(firebaseConfig);
+
+    // Função de criação de conta
+    function criarConta() {
+      var email = document.getElementById("newEmail").value;
+      var password = document.getElementById("newPassword").value;
+
+      // Cria uma nova conta de usuário no Firebase Auth
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(function(userCredential) {
+          var user = userCredential.user;
+          document.getElementById("createAccountStatus").innerHTML = "Conta criada: " + user.email;
+        })
+        .catch(function(error) {
+          var errorMessage = error.message;
+          document.getElementById("createAccountStatus").innerHTML = "Erro ao criar conta: " + errorMessage;
+        });
+    }
 
     // Função de login
     function login() {
@@ -27,7 +41,7 @@
       firebase.auth().signInWithEmailAndPassword(email, password)
         .then(function(userCredential) {
           var user = userCredential.user;
-          document.getElementById("loginStatus").innerHTML = "Usuário conectado: " + user.email;
+          //document.getElementById("loginStatus").innerHTML = "Usuário conectado: " + user.email;
         })
         .catch(function(error) {
           var errorMessage = error.message;
@@ -37,7 +51,17 @@
   </script>
 </head>
 <body>
-  <h1>Login com Firebase</h1>
+  <h1>Login e Autenticação com Firebase</h1>
+  
+  <h2>Criar Conta</h2>
+  <label for="newEmail">Email:</label>
+  <input type="email" id="newEmail" required><br>
+  <label for="newPassword">Senha:</label>
+  <input type="password" id="newPassword" required><br>
+  <button onclick="criarConta()">Criar Conta</button>
+  <p id="createAccountStatus"></p>
+
+  <h2>Login</h2>
   <label for="email">Email:</label>
   <input type="email" id="email" required><br>
   <label for="password">Senha:</label>
