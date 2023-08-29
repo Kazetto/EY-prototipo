@@ -41,6 +41,7 @@
 
 
 
+
 @media(max-width: 767px) {
   .header-login-header {
     padding-left: var(--dl-space-space-twounits);
@@ -82,7 +83,7 @@
   object-fit: cover;
 }
 .footer-text {
-  color: var(--dl-color-gray-white);
+  color: #000000;
 }
 .footer-icon-group {
   display: flex;
@@ -114,6 +115,8 @@
   width: 100%;
   align-self: center;
 }
+
+
 
 
 

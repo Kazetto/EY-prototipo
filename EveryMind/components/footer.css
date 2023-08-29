@@ -27,7 +27,6 @@
 }
 .footer-text {
   color: #000000;
-  
 }
 .footer-icon-group {
   display: flex;
@@ -59,6 +58,8 @@
   width: 100%;
   align-self: center;
 }
+
+
 
 
 

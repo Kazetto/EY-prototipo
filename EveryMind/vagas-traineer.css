@@ -144,162 +144,87 @@
   }
 }
 
-.menu-container {
+.vagas-traineer-container {
   width: 100%;
   display: flex;
   overflow: auto;
   min-height: 100vh;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
-.menu-banner {
+.vagas-traineer-features {
   width: 100%;
   display: flex;
   padding: var(--dl-space-space-threeunits);
-  align-items: center;
-  padding-top: 48px;
+  max-width: var(--dl-size-size-maxwidth);
   flex-direction: column;
-  justify-content: space-between;
 }
-.menu-text {
-  text-align: center;
-  font-weight: 600;
-  margin-bottom: var(--dl-space-space-twounits);
-}
-.menu-text04 {
-  font-weight: 600;
-}
-.menu-container1 {
-  width: 100%;
-  height: 500px;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-}
-.menu-navlink {
-  display: contents;
-}
-.menu-container2 {
-  width: 50%;
-  height: 500px;
-  display: flex;
-  opacity: 0.8;
-  align-items: center;
-  background-size: cover;
-  justify-content: center;
-  text-decoration: none;
-  background-image: linear-gradient(90deg, rgb(9, 142, 232) 0.00%,rgba(44, 62, 80, 0.2) 100.00%),url('https://images.unsplash.com/photo-1498758536662-35b82cd15e29?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDE4fHx3b3JraW5nfGVufDB8fHx8MTY5MzIyNTg1MHww&ixlib=rb-4.0.3&w=800');
-  background-position: center;
-}
-.menu-text11 {
-  color: rgb(255, 255, 255);
+.vagas-traineer-text {
   font-size: 3rem;
+  margin-bottom: var(--dl-space-space-threeunits);
 }
-.menu-navlink1 {
-  display: contents;
-}
-.menu-container3 {
-  width: 50%;
-  height: 500px;
-  display: flex;
-  opacity: 0.8;
-  align-items: center;
-  background-size: cover;
-  justify-content: center;
-  text-decoration: none;
-  background-image: linear-gradient(270deg, rgb(4, 116, 121) 0.00%,rgba(40, 155, 5, 0.3) 100.00%),url("https://images.unsplash.com/photo-1507307080003-b453948f5528?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDM5fHx3b3JraW5nfGVufDB8fHx8MTY5MzIyNTkyMXww&ixlib=rb-4.0.3&w=800");
-  background-position: right;
-}
-.menu-text12 {
-  color: rgb(255, 255, 255);
-  font-size: 3rem;
-}
-.menu-banner1 {
-  width: 100%;
+.vagas-traineer-banner {
+  width: 1311px;
   display: flex;
   padding: var(--dl-space-space-threeunits);
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
 }
-.menu-text13 {
-  color: var(--dl-color-success-300);
+.vagas-traineer-text01 {
   font-size: 3rem;
   text-align: center;
 }
-.menu-text14 {
+.vagas-traineer-text02 {
+  font-size: 1.5rem;
+  align-self: flex-start;
+  text-align: center;
+}
+.vagas-traineer-text03 {
   max-width: var(--dl-size-size-maxwidth);
   margin-top: var(--dl-space-space-twounits);
-  text-align: center;
+  text-align: justify;
   margin-bottom: var(--dl-space-space-twounits);
 }
-.menu-text17 {
-  max-width: var(--dl-size-size-maxwidth);
-  margin-top: var(--dl-space-space-twounits);
-  text-align: center;
-  margin-bottom: var(--dl-space-space-twounits);
+.vagas-traineer-button {
+  transition: 0.3s;
+  padding-top: var(--dl-space-space-unit);
+  padding-left: var(--dl-space-space-twounits);
+  padding-right: var(--dl-space-space-twounits);
+  padding-bottom: var(--dl-space-space-unit);
+  background-color: var(--dl-color-primary-700);
 }
-@media(max-width: 1600px) {
-  .menu-container1 {
-    height: 293px;
-  }
-  .menu-container2 {
-    height: 293px;
-  }
-  .menu-container3 {
-    height: 293px;
-  }
-}
-@media(max-width: 1200px) {
-  .menu-container1 {
-    width: 100%;
-  }
-  .menu-container2 {
-    width: 50%;
-  }
-  .menu-container3 {
-    width: 50%;
-  }
+.vagas-traineer-button:hover {
+  transform: scale(1.02);
 }
 @media(max-width: 991px) {
-  .menu-text {
-    text-align: center;
-  }
-  .menu-text14 {
-    max-width: 100%;
-  }
-  .menu-text17 {
+  .vagas-traineer-text03 {
     max-width: 100%;
   }
 }
 @media(max-width: 767px) {
-  .menu-banner {
+  .vagas-traineer-features {
     padding-left: var(--dl-space-space-twounits);
     padding-right: var(--dl-space-space-twounits);
   }
-  .menu-banner1 {
+  .vagas-traineer-banner {
     padding-left: var(--dl-space-space-twounits);
     padding-right: var(--dl-space-space-twounits);
   }
-  .menu-text14 {
-    padding-left: var(--dl-space-space-unit);
-    padding-right: var(--dl-space-space-unit);
-  }
-  .menu-text17 {
+  .vagas-traineer-text03 {
     padding-left: var(--dl-space-space-unit);
     padding-right: var(--dl-space-space-unit);
   }
 }
 @media(max-width: 479px) {
-  .menu-banner {
+  .vagas-traineer-features {
     padding-top: var(--dl-space-space-twounits);
     padding-left: var(--dl-space-space-unit);
     padding-right: var(--dl-space-space-unit);
     padding-bottom: var(--dl-space-space-twounits);
   }
-  .menu-banner1 {
+  .vagas-traineer-banner {
     padding-top: var(--dl-space-space-twounits);
     padding-left: var(--dl-space-space-unit);
     padding-right: var(--dl-space-space-unit);
