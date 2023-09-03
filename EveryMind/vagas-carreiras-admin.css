@@ -59,6 +59,41 @@
   }
 }
 
+.button-links-admin-nav {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.button-links-admin-button {
+  margin-left: var(--dl-space-space-unit);
+  margin-right: var(--dl-space-space-unit);
+  background-color: var(--dl-color-primary-700);
+}
+.button-links-admin-navlink {
+  margin-left: var(--dl-space-space-unit);
+  margin-right: var(--dl-space-space-unit);
+  text-decoration: none;
+  background-color: var(--dl-color-success-700);
+}
+
+@media(max-width: 767px) {
+  .button-links-admin-nav {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+@media(max-width: 479px) {
+  .button-links-admin-nav {
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
 .card-vagas1-feature-card {
   width: auto;
   display: flex;
@@ -259,6 +294,11 @@
   margin-right: var(--dl-space-space-unit);
   background-color: var(--dl-color-primary-500);
 }
+.card-vagas1-button2 {
+  margin-left: var(--dl-space-space-unit);
+  margin-right: var(--dl-space-space-unit);
+  background-color: var(--dl-color-danger-700);
+}
 
 
 
@@ -396,7 +436,7 @@
   }
 }
 
-.vagas-carreiras-container {
+.vagas-carreiras-admin-container {
   width: 100%;
   display: flex;
   overflow: auto;
@@ -405,29 +445,29 @@
   flex-direction: column;
   justify-content: flex-start;
 }
-.vagas-carreiras-features {
+.vagas-carreiras-admin-features {
   width: 90%;
   display: flex;
   padding: var(--dl-space-space-threeunits);
   max-width: 100%;
   flex-direction: column;
 }
-.vagas-carreiras-text {
+.vagas-carreiras-admin-text {
   font-size: 3rem;
   margin-bottom: var(--dl-space-space-threeunits);
 }
-.vagas-carreiras-features1 {
+.vagas-carreiras-admin-features1 {
   width: auto;
   display: flex;
   padding: var(--dl-space-space-threeunits);
   max-width: 100%;
   flex-direction: column;
 }
-.vagas-carreiras-text1 {
+.vagas-carreiras-admin-text1 {
   font-size: 3rem;
   margin-bottom: var(--dl-space-space-threeunits);
 }
-.vagas-carreiras-container1 {
+.vagas-carreiras-admin-container1 {
   flex: 0 0 auto;
   width: 100%;
   height: 100px;
@@ -435,74 +475,74 @@
   align-items: center;
   justify-content: flex-start;
 }
-.vagas-carreiras-textinput {
+.vagas-carreiras-admin-textinput {
   margin-left: var(--dl-space-space-oneandhalfunits);
   margin-right: var(--dl-space-space-oneandhalfunits);
 }
-.vagas-carreiras-container2 {
+.vagas-carreiras-admin-container2 {
   width: 1450px;
   display: grid;
   grid-gap: var(--dl-space-space-twounits);
   grid-template-columns: 1fr 1fr;
 }
 @media(max-width: 1600px) {
-  .vagas-carreiras-features {
+  .vagas-carreiras-admin-features {
     align-items: flex-start;
     justify-content: flex-start;
   }
-  .vagas-carreiras-features1 {
+  .vagas-carreiras-admin-features1 {
     width: auto;
     height: auto;
     max-width: auto;
   }
-  .vagas-carreiras-textinput {
+  .vagas-carreiras-admin-textinput {
     margin-left: var(--dl-space-space-twounits);
     margin-right: var(--dl-space-space-twounits);
   }
-  .vagas-carreiras-container2 {
+  .vagas-carreiras-admin-container2 {
     width: auto;
     height: auto;
     align-self: center;
   }
 }
 @media(max-width: 1200px) {
-  .vagas-carreiras-features {
+  .vagas-carreiras-admin-features {
     flex-direction: column;
   }
-  .vagas-carreiras-features1 {
+  .vagas-carreiras-admin-features1 {
     width: 1116px;
     height: 528px;
     align-items: stretch;
     flex-direction: column;
     justify-content: center;
   }
-  .vagas-carreiras-container2 {
+  .vagas-carreiras-admin-container2 {
     width: auto;
     height: auto;
     align-self: flex-start;
   }
 }
 @media(max-width: 767px) {
-  .vagas-carreiras-features {
+  .vagas-carreiras-admin-features {
     padding-left: var(--dl-space-space-twounits);
     padding-right: var(--dl-space-space-twounits);
   }
-  .vagas-carreiras-features1 {
+  .vagas-carreiras-admin-features1 {
     padding-left: var(--dl-space-space-twounits);
     padding-right: var(--dl-space-space-twounits);
   }
-  .vagas-carreiras-container2 {
+  .vagas-carreiras-admin-container2 {
     grid-template-columns: 1fr;
   }
 }
 @media(max-width: 479px) {
-  .vagas-carreiras-features {
+  .vagas-carreiras-admin-features {
     padding-top: var(--dl-space-space-twounits);
     padding-left: var(--dl-space-space-unit);
     padding-right: var(--dl-space-space-unit);
     padding-bottom: var(--dl-space-space-twounits);
   }
-  .vagas-carreiras-features1 {
+  .vagas-carreiras-admin-features1 {
     padding-top: var(--dl-space-space-twounits);
     padding-left: var(--dl-space-space-unit);
     padding-right: var(--dl-space-space-unit);

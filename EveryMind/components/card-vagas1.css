@@ -180,8 +180,7 @@
   align-self: center;
 }
 .card-vagas1-button {
-  width: auto;
-  align-self: center;
+  align-self: stretch;
   margin-top: var(--dl-space-space-oneandhalfunits);
   transition: 0.3s;
   margin-left: var(--dl-space-space-oneandhalfunits);
@@ -193,6 +192,19 @@
   margin-top: var(--dl-space-space-oneandhalfunits);
   margin-bottom: var(--dl-space-space-oneandhalfunits);
 }
+.card-vagas1-button1 {
+  align-self: stretch;
+  margin-left: var(--dl-space-space-unit);
+  margin-right: var(--dl-space-space-unit);
+  background-color: var(--dl-color-primary-500);
+}
+.card-vagas1-button2 {
+  margin-left: var(--dl-space-space-unit);
+  margin-right: var(--dl-space-space-unit);
+  background-color: var(--dl-color-danger-700);
+}
+
+
 
 
 

@@ -64,6 +64,13 @@
 
 
 
+
+.footer-root-class-name9 {
+  width: 100%;
+  align-self: center;
+}
+
+
 @media(max-width: 767px) {
   .footer-footer {
     padding-left: var(--dl-space-space-twounits);
