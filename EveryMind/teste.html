@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cadastro de Vagas</title>
+  <title>Lista de Vagas</title>
+  <style>
+    /* Estilos para o cartão */
+    .card {
+      border: 1px solid #ccc;
+      margin: 10px;
+      padding: 10px;
+      width: 300px;
+      background-color: #f9f9f9;
+    }
+  </style>
   <!-- Inclua o Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
@@ -22,34 +32,6 @@
     // Referência ao banco de dados do Firebase
     var database = firebase.database();
 
-    // Função para salvar uma vaga no Firebase
-    function cadastrarVaga() {
-      var cargo = document.getElementById("cargo").value;
-      var descricao = document.getElementById("descricao").value;
-      var deficiencia = document.getElementById("deficiencia").checked;
-      var corRacial = document.getElementById("corRacial").value;
-
-      // Cria um objeto com os dados da vaga, incluindo as informações adicionais
-      var vaga = {
-        cargo: cargo,
-        descricao: descricao,
-        deficiencia: deficiencia,
-        corRacial: corRacial
-      };
-
-      // Gere uma chave única para a vaga
-      var novaChave = database.ref("vagas").push().key;
-
-      // Salva a vaga no Firebase com a chave gerada
-      database.ref("vagas/" + novaChave).set(vaga);
-
-      // Limpa o formulário após o envio
-      document.getElementById("cargo").value = "";
-      document.getElementById("descricao").value = "";
-      document.getElementById("deficiencia").checked = false;
-      document.getElementById("corRacial").value = "branca"; // Define um valor padrão para cores raciais
-    }
-
     // Função para listar e exibir vagas
     function listarVagas() {
       var vagasRef = database.ref("vagas");
@@ -60,37 +42,26 @@
 
         snapshot.forEach(function(childSnapshot) {
           var vaga = childSnapshot.val();
-          var li = document.createElement("li");
-          li.innerHTML = "<strong>Cargo:</strong> " + vaga.cargo + "<br><strong>Descrição:</strong> " + vaga.descricao +
-            "<br><strong>Pessoas com Deficiências:</strong> " + (vaga.deficiencia ? "Sim" : "Não") +
-            "<br><strong>Cores Raciais:</strong> " + vaga.corRacial;
-          lista.appendChild(li);
+          var card = document.createElement("div");
+          card.classList.add("card");
+
+          // Preencha o cartão com informações da vaga
+          card.innerHTML = `
+            <strong>Cargo:</strong> ${vaga.cargo}<br>
+            <strong>Descrição:</strong> ${vaga.descricao}<br>
+            <strong>Pessoas com Deficiências:</strong> ${vaga.deficiencia ? "Sim" : "Não"}<br>
+            <strong>Cores Raciais:</strong> ${vaga.corRacial}
+          `;
+
+          lista.appendChild(card);
         });
       });
     }
   </script>
 </head>
 <body>
-  <h1>Cadastro de Vagas</h1>
-  <label for="cargo">Cargo:</label>
-  <input type="text" id="cargo" required><br>
-  <label for="descricao">Descrição:</label>
-  <textarea id="descricao" required></textarea><br>
-  <label for="deficiencia">Somentes para PcD:</label>
-  <input type="checkbox" id="deficiencia"><br>
-  <label for="corRacial">Cores Raciais:</label>
-  <select id="corRacial">
-    <option value="todos">Todos</option>
-    <option value="branca">Branca</option>
-    <option value="negra">Negra</option>
-    <option value="parda">Parda</option>
-    <option value="amarela">Amarela</option>
-    <option value="indigena">Indígena</option>
-  </select><br>
-  <button onclick="cadastrarVaga()">Cadastrar Vaga</button>
-
   <h2>Lista de Vagas</h2>
-  <ul id="vaga-list"></ul>
+  <div id="vaga-list"></div>
   <script>listarVagas();</script>
 </body>
 </html>

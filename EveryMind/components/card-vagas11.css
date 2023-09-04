@@ -1,4 +1,4 @@
-.card-vagas11-feature-card {
+.card-vagas1-feature-card {
   width: auto;
   display: flex;
   padding: var(--dl-space-space-unit);
@@ -12,176 +12,22 @@
   justify-content: flex-start;
   background-color: var(--dl-color-gray-white);
 }
-.card-vagas11-icon {
+.card-vagas1-icon {
   fill: var(--dl-color-gray-500);
   width: 2rem;
   height: 2rem;
   flex-shrink: 0;
   margin-right: var(--dl-space-space-oneandhalfunits);
 }
-.card-vagas11-container {
+.card-vagas1-container {
   width: 610px;
   height: auto;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
 }
-.card-vagas11-container1 {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-.card-vagas11-container2 {
-  flex: 0 0 auto;
-  width: auto;
-  height: auto;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-.card-vagas11-text {
-  font-weight: 600;
-  margin-bottom: var(--dl-space-space-unit);
-}
-.card-vagas11-container3 {
-  flex: 0 0 auto;
-  width: auto;
-  height: 24px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-.card-vagas11-container4 {
-  flex: 0 0 auto;
-  width: auto;
-  height: 24px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-.card-vagas11-container5 {
-  flex: 0 0 auto;
-  width: auto;
-  height: 24px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-.card-vagas11-container6 {
-  flex: 0 0 auto;
-  width: auto;
-  height: 24px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-.card-vagas11-container7 {
-  flex: 0 0 auto;
-  width: auto;
-  height: 24px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-.card-vagas11-icon02 {
-  width: 24px;
-  height: 24px;
-  margin-left: var(--dl-space-space-halfunit);
-  margin-right: var(--dl-space-space-halfunit);
-}
-.card-vagas11-text1 {
-  margin-left: var(--dl-space-space-halfunit);
-  margin-right: var(--dl-space-space-halfunit);
-}
-.card-vagas11-icon04 {
-  width: 24px;
-  height: 24px;
-  margin-left: var(--dl-space-space-halfunit);
-  margin-right: var(--dl-space-space-halfunit);
-}
-.card-vagas11-text2 {
-  margin-left: var(--dl-space-space-halfunit);
-  margin-right: var(--dl-space-space-halfunit);
-}
-.card-vagas11-icon06 {
-  width: 24px;
-  height: 24px;
-  margin-left: var(--dl-space-space-halfunit);
-  margin-right: var(--dl-space-space-halfunit);
-}
-.card-vagas11-text3 {
-  margin-left: var(--dl-space-space-halfunit);
-  margin-right: var(--dl-space-space-halfunit);
-}
-.card-vagas11-icon08 {
-  width: 24px;
-  height: 24px;
-  margin-left: var(--dl-space-space-halfunit);
-  margin-right: var(--dl-space-space-halfunit);
-}
-.card-vagas11-text4 {
-  margin-left: var(--dl-space-space-halfunit);
-  margin-right: var(--dl-space-space-halfunit);
-}
-.card-vagas11-container8 {
-  width: auto;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.card-vagas11-text5 {
-  color: var(--dl-color-primary-100);
-  width: 50px;
-  height: 20px;
-  align-self: flex-start;
-  margin-top: var(--dl-space-space-halfunit);
-  text-align: center;
-  margin-left: var(--dl-space-space-unit);
-  border-color: var(--dl-color-primary-100);
-  border-width: 1px;
-  margin-right: var(--dl-space-space-unit);
-  border-radius: var(--dl-radius-radius-radius4);
-  margin-bottom: var(--dl-space-space-halfunit);
-  background-color: #bce9ef;
-}
-.card-vagas11-text6 {
-  color: var(--dl-color-primary-100);
-  width: auto;
-  height: auto;
-  align-self: flex-start;
-  margin-top: var(--dl-space-space-halfunit);
-  text-align: center;
-  margin-left: var(--dl-space-space-unit);
-  border-color: var(--dl-color-primary-100);
-  border-width: 1px;
-  margin-right: var(--dl-space-space-unit);
-  border-radius: var(--dl-radius-radius-radius4);
-  margin-bottom: var(--dl-space-space-halfunit);
-  background-color: #bce9ef;
-}
-.card-vagas11-text7 {
-  color: var(--dl-color-primary-100);
-  width: auto;
-  height: auto;
-  align-self: flex-start;
-  margin-top: var(--dl-space-space-halfunit);
-  text-align: center;
-  margin-left: var(--dl-space-space-unit);
-  border-color: var(--dl-color-primary-100);
-  border-width: 1px;
-  margin-right: var(--dl-space-space-unit);
-  border-radius: var(--dl-radius-radius-radius4);
-  margin-bottom: var(--dl-space-space-halfunit);
-  background-color: #bce9ef;
-}
-.card-vagas11-text8 {
-  align-self: center;
-}
-.card-vagas11-button {
-  width: auto;
-  align-self: center;
+.card-vagas1-button {
+  align-self: stretch;
   margin-top: var(--dl-space-space-oneandhalfunits);
   transition: 0.3s;
   margin-left: var(--dl-space-space-oneandhalfunits);
@@ -189,12 +35,30 @@
   margin-bottom: var(--dl-space-space-oneandhalfunits);
   background-color: var(--dl-color-primary-700);
 }
-.card-vagas11-button:hover {
+.card-vagas1-button:hover {
   margin-top: var(--dl-space-space-oneandhalfunits);
   margin-bottom: var(--dl-space-space-oneandhalfunits);
 }
+.card-vagas1-button1 {
+  align-self: stretch;
+  margin-left: var(--dl-space-space-unit);
+  margin-right: var(--dl-space-space-unit);
+  background-color: var(--dl-color-primary-500);
+}
+.card-vagas1-button2 {
+  margin-left: var(--dl-space-space-unit);
+  margin-right: var(--dl-space-space-unit);
+  background-color: var(--dl-color-danger-700);
+}
+
+
+
+
+
+
+
 @media(max-width: 1600px) {
-  .card-vagas11-feature-card {
+  .card-vagas1-feature-card {
     width: auto;
     height: auto;
     margin: 10px;
@@ -203,26 +67,15 @@
     padding-right: 0px;
     padding-bottom: 0px;
   }
-  .card-vagas11-icon {
+  .card-vagas1-icon {
     margin: var(--dl-space-space-halfunit);
   }
-  .card-vagas11-container {
+  .card-vagas1-container {
     height: 250px;
-  }
-  .card-vagas11-text {
-    margin: var(--dl-space-space-halfunit);
   }
 }
 @media(max-width: 767px) {
-  .card-vagas11-feature-card {
+  .card-vagas1-feature-card {
     flex-direction: row;
-  }
-  .card-vagas11-container1 {
-    flex-direction: column;
-  }
-}
-@media(max-width: 479px) {
-  .card-vagas11-container1 {
-    flex-direction: column;
   }
 }
