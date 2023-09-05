@@ -28,61 +28,75 @@
     // Referência ao banco de dados do Firebase
     var database = firebase.database();
 
-    // Função para salvar uma vaga no Firebase
-    function cadastrarVaga() {
-      alert("Vaga adicionado com sucesso!!!");
-      var cargo = document.getElementById("cargo").value;
-      var empresa = document.getElementById("empresa").value;
-      var tipoVaga = document.getElementById("tipoVaga").value;
-      var descricao = document.getElementById("descricao").value;
-      var deficiencia = document.getElementById("deficiencia").checked;
-      var corRacial = document.getElementById("corRacial").value;
-      var genero = document.getElementById("genero").value;
 
-      
-      
+    // Função para carregar os dados da vaga em um formulário
+    function carregarDadosVaga(chave) {
+      var vagaRef = database.ref("vagas/" + chave);
 
-      // Obtém uma referência à lista de vagas
-      var vagasRef = database.ref("vagas");
+      vagaRef.on("value", function(snapshot) {
+        var vaga = snapshot.val();
 
-      // Consulta o banco de dados para obter o ID mais alto existente
-      vagasRef.orderByChild("id").limitToLast(1).once("value", function (snapshot) {
-        var ultimoId = 0;
+        // Preencha os campos do formulário com os dados da vaga
+        document.getElementById("cargo-alterar").value = vaga.cargo;
+        document.getElementById("empresa-alterar").value = vaga.empresa;
+        document.getElementById("tipoVaga-alterar").value = vaga.tipoVaga;
+        document.getElementById("descricao-alterar").value = vaga.descricao;
+        document.getElementById("deficiencia-alterar").checked = vaga.deficiencia;
+        document.getElementById("corRacial-alterar").value = vaga.corRacial;
+        document.getElementById("genero-alterar").value = vaga.genero;
+      });
+    }
 
-        snapshot.forEach(function (childSnapshot) {
-          ultimoId = childSnapshot.val().id;
-        });
 
-        // Gera o próximo ID incremental
-        var novoId = ultimoId + 1;
+    // Obtém a chave da URL
+    var chave = new URLSearchParams(window.location.search).get('chave');
 
-        // Cria um objeto com os dados da vaga
-        var vaga = {
-          id: novoId,
+    // Verifica se a chave é válida e, em seguida, carrega os dados no formulário
+    if (chave) {
+      carregarDadosVaga(chave);
+    } else {
+      console.error("A chave não foi encontrada na URL.");
+    }
+
+    // Função para Alterar uma vaga no Firebase
+    function alterarVaga() {
+      // Obtém o valor da chave da URL
+      var chave = new URLSearchParams(window.location.search).get('chave');
+
+      // Verifica se a chave é válida
+      if (chave) {
+        // Obtenha os valores dos campos do formulário
+        var cargo = document.getElementById("cargo-alterar").value;
+        var empresa = document.getElementById("empresa-alterar").value;
+        var tipoVaga = document.getElementById("tipoVaga-alterar").value;
+        var descricao = document.getElementById("descricao-alterar").value;
+        var deficiencia = document.getElementById("deficiencia-alterar").checked;
+        var corRacial = document.getElementById("corRacial-alterar").value;
+        var genero = document.getElementById("genero-alterar").value;
+
+        // Referência ao banco de dados do Firebase
+        var database = firebase.database();
+
+        // Atualiza os dados da vaga no Firebase com base na chave única
+        database.ref("vagas/" + chave).update({
           cargo: cargo,
-          empresa:empresa,
-          tipoVaga:tipoVaga,
+          empresa: empresa,
+          tipoVaga: tipoVaga,
           descricao: descricao,
           deficiencia: deficiencia,
           corRacial: corRacial,
-          genero : genero
-        };
+          genero: genero
+          
+        });
 
-
-        // Salva a vaga no Firebase com o novo ID
-        vagasRef.push(vaga);
-
-        // Limpa o formulário após o envio
-        document.getElementById("cargo").value = "";
-        document.getElementById("empresa").value = "";
-        document.getElementById("tipoVaga").value = "";
-        document.getElementById("descricao").value = "";
-        document.getElementById("deficiencia").checked = false;
-        document.getElementById("corRacial").value = "branca";
-        document.getElementById("genero").value = "branca";
-        window.location.href = "/vagas-carreiras-admin.html"; // Define um valor padrão para cores raciais
-      });
+        // Move a tela após salvar
+        alert("Vaga alterada com sucesso!");
+        window.location.href = '/vagas-carreiras-admin.html';
+      } else {
+        console.error("A chave não foi encontrada na URL.");
+      }
     }
+
     // Função para listar e exibir vagas
     function listarVagas() {
       var vagasRef = database.ref("vagas");
@@ -97,7 +111,7 @@
           li.innerHTML = "<strong>Cargo:</strong> " + vaga.cargo + "<br><strong>Empresa:</strong> " + vaga.empresa +
             "<br><strong>Tipo de Vaga:</strong> " + vaga.tipoVaga + "<br><strong>Descrição:</strong> " + vaga.descricao +
             "<br><strong>Pessoas com Deficiências:</strong> " + (vaga.deficiencia ? "Sim" : "Não") +
-            "<br><strong>Cores Raciais:</strong> " + vaga.corRacial + "<br><strong>Genero:</strong> " + vaga.genero;
+            "<br><strong>Cores Raciais:</strong> " + vaga.corRacial + "<strong>Genero:</strong>" + vaga.genero;
           lista.appendChild(li);
         });
       });
@@ -236,18 +250,18 @@
         <form class="header-login-form"></form>
       </div>
       <div class="cadastro-vagas-container1">
-        <div class="cadastro-vagas-pricing-card">
+        <div class="cadastro-vagas-pricing-card" id="alterar-form">
           <img alt="image" src="/public/2323-fotor-bg-remover-20230825105844-200h.png" class="cadastro-vagas-image" />
-          <h1 class="cadastro-vagas-text">Cadastro de Vagas</h1>
-          <label for="cargo" class="cadastro-vagas-text1">Cargo:</label>
-          <input class="cadastro-vagas-textinput input" type="text" id="cargo" required><br>
+          <h1 class="cadastro-vagas-text">Alterar de Vaga</h1>
+          <label for="cargo-alterar" class="cadastro-vagas-text1">Cargo:</label>
+          <input class="cadastro-vagas-textinput input" type="text" id="cargo-alterar" required><br>
 
-          <label for="empresa" class="cadastro-vagas-text1">Nome da Empresa:</label>
-          <input class="cadastro-vagas-textinput input" type="text" id="empresa" required><br>
-          
+          <label for="empresa-alterar" class="cadastro-vagas-text1">Nome da Empresa:</label>
+          <input class="cadastro-vagas-textinput input" type="text" id="empresa-alterar" required><br>
 
-          <label for="tipoVaga" class="cadastro-vagas-text5">Tipo de vaga</label>
-          <select id="tipoVaga" class="cadastro-vagas-select">
+
+          <label for="tipoVaga-alterar" class="cadastro-vagas-text5">Tipo de vaga</label>
+          <select id="tipoVaga-alterar" class="cadastro-vagas-select">
             <option value="clt">CLT</option>
             <option value="autonomo">Autonomo</option>
             <option value="mei">MEI</option>
@@ -258,17 +272,17 @@
             <option value="temporario">Temporario</option>
           </select><br>
 
-          <label for="descricao" class="cadastro-vagas-text2">Descrição:</label>
-          <textarea id="descricao" class="cadastro-vagas-textarea textarea" required></textarea><br>
-          <label for="deficiencia" class="cadastro-vagas-text3">Somentes para PcD:</label>
+          <label for="descricao-alterar" class="cadastro-vagas-text2">Descrição:</label>
+          <textarea id="descricao-alterar" class="cadastro-vagas-textarea textarea" required></textarea><br>
+          <label for="deficiencia-alterar" class="cadastro-vagas-text3">Somentes para PcD:</label>
           <div class="cadastro-vagas-container2">
-            <input type="checkbox" id="deficiencia"><br>
+            <input type="checkbox" id="deficiencia-alterar"><br>
             <label class="cadastro-vagas-text4">Exclusivo para PcD</label>
           </div>
 
 
-          <label for="corRacial" class="cadastro-vagas-text5">Cores Raciais:</label>
-          <select id="corRacial" class="cadastro-vagas-select">
+          <label for="corRacial-alterar" class="cadastro-vagas-text5">Cores Raciais:</label>
+          <select id="corRacial-alterar" class="cadastro-vagas-select">
             <option value="Todos">Todos</option>
             <option value="Negra">Negra</option>
             <option value="Parda">Parda</option>
@@ -276,21 +290,16 @@
             <option value="Indigena">Indígena</option>
           </select><br>
 
-          <label for="genero" class="cadastro-vagas-text5">Cores Raciais:</label>
-          <select id="genero" class="cadastro-vagas-select">
+          <label for="genero-alterar" class="cadastro-vagas-text5">Genero:</label>
+          <select id="genero-alterar" class="cadastro-vagas-select">
             <option value="Seleciona">Seleciona</option>
             <option value="Masculino">Masculino</option>
             <option value="Feminino">Feminino</option>
             <option value="lgbtqia+">LGBTQIA+</option>
             <option value="Outros">Outros</option>
           </select><br>
-          <button class="cadastro-vagas-button button" id="button_cadastrar"
-            onclick="cadastrarVaga()">Cadastrar
-            Vaga</button>
 
-
-
-
+          <button class="cadastro-vagas-button button" id="button_alterar" onclick="alterarVaga()">Alterar Vaga</button>
         </div>
       </div>
 
