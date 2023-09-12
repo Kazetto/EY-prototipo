@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CadastroVagas - everymind-prototipo</title>
+    <meta property="og:title" content="CadastroVagas - everymind-prototipo" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+    <script>
+        // Configure o Firebase SDK com suas credenciais
+        var firebaseConfig = {
+            apiKey: "AIzaSyB41DJ0DWEoJb8P5OQPIYTFHO9g4JHAQo8",
+            authDomain: "everymind-proto.firebaseapp.com",
+            databaseURL: "https://everymind-proto-default-rtdb.firebaseio.com",
+            projectId: "everymind-proto",
+            storageBucket: "everymind-proto.appspot.com",
+            messagingSenderId: "158822858584",
+            appId: "1:158822858584:web:7bce6a8c8cb22c267f2f2d",
+            measurementId: "G-PK8S2VSYRL"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        // Referência ao banco de dados do Firebase
+        var database = firebase.database();
+
+        // Função para salvar uma vaga no Firebase
+        function cadastrarVaga() {
+            alert("Vaga adicionado com sucesso!!!");
+            var cargo = document.getElementById("cargo").value;
+            var empresa = document.getElementById("empresa").value;
+            var tipoVaga = document.getElementById("tipoVaga").value;
+            var descricao = document.getElementById("descricao").value;
+            var deficiencia = document.getElementById("deficiencia").checked;
+            var etnia = document.getElementById("etnia").value;
+            var sexo = document.getElementById("sexo").value;
+
+
+
+
+            // Obtém uma referência à lista de vagas
+            var vagasRef = database.ref("vagas");
+
+            // Consulta o banco de dados para obter o ID mais alto existente
+            vagasRef.orderByChild("id").limitToLast(1).once("value", function (snapshot) {
+                var ultimoId = 0;
+
+                snapshot.forEach(function (childSnapshot) {
+                    ultimoId = childSnapshot.val().id;
+                });
+
+                // Gera o próximo ID incremental
+                var novoId = ultimoId + 1;
+
+                // Cria um objeto com os dados da vaga
+                var vaga = {
+                    id: novoId,
+                    cargo: cargo,
+                    empresa: empresa,
+                    tipoVaga: tipoVaga,
+                    descricao: descricao,
+                    deficiencia: deficiencia,
+                    etnia: etnia,
+                    sexo: sexo
+                };
+
+
+                // Salva a vaga no Firebase com o novo ID
+                vagasRef.push(vaga);
+
+                // Limpa o formulário após o envio
+                document.getElementById("cargo").value = "";
+                document.getElementById("empresa").value = "";
+                document.getElementById("tipoVaga").value = "";
+                document.getElementById("descricao").value = "";
+                document.getElementById("deficiencia").checked = false;
+                document.getElementById("etnia").value = "branca";
+                document.getElementById("sexo").value = "branca";
+                window.location.href =
+                    "/vagas-carreiras-admin.html"; // Define um valor padrão para cores raciais
+            });
+        }
+        // Função para listar e exibir vagas
+        function listarVagas() {
+            var vagasRef = database.ref("vagas");
+
+            vagasRef.on("value", function (snapshot) {
+                var lista = document.getElementById("vaga-list");
+                lista.innerHTML = "";
+
+                snapshot.forEach(function (childSnapshot) {
+                    var vaga = childSnapshot.val();
+                    var li = document.createElement("li");
+                    li.innerHTML = "<strong>Cargo:</strong> " + vaga.cargo +
+                        "<br><strong>Empresa:</strong> " + vaga.empresa +
+                        "<br><strong>Tipo de Vaga:</strong> " + vaga.tipoVaga +
+                        "<br><strong>Descrição:</strong> " + vaga.descricao +
+                        "<br><strong>Pessoas com Deficiências:</strong> " + (vaga.deficiencia ? "Sim" :
+                            "Não") +
+                        "<br><strong>Cores Raciais:</strong> " + vaga.etnia +
+                        "<br><strong>Sexo:</strong> " + vaga.sexo;
+                    lista.appendChild(li);
+                });
+            });
+        }
+    </script>
+
+    <style data-tag="reset-style-sheet">
+        html {
+            line-height: 1.15;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+            border-width: 0;
+            border-style: solid;
+        }
+
+        p,
+        li,
+        ul,
+        pre,
+        div,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        figure,
+        blockquote,
+        figcaption {
+            margin: 0;
+            padding: 0;
+        }
+
+        button {
+            background-color: transparent;
+        }
+
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            font-family: inherit;
+            font-size: 100%;
+            line-height: 1.15;
+            margin: 0;
+        }
+
+        button,
+        select {
+            text-transform: none;
+        }
+
+        button,
+        [type="button"],
+        [type="reset"],
+        [type="submit"] {
+            -webkit-appearance: button;
+        }
+
+        button::-moz-focus-inner,
+        [type="button"]::-moz-focus-inner,
+        [type="reset"]::-moz-focus-inner,
+        [type="submit"]::-moz-focus-inner {
+            border-style: none;
+            padding: 0;
+        }
+
+        button:-moz-focus,
+        [type="button"]:-moz-focus,
+        [type="reset"]:-moz-focus,
+        [type="submit"]:-moz-focus {
+            outline: 1px dotted ButtonText;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: inherit;
+        }
+
+        input {
+            padding: 2px 4px;
+        }
+
+        img {
+            display: block;
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+    </style>
+    <style data-tag="default-style-sheet">
+        html {
+            font-family: Inter;
+            font-size: 16px;
+        }
+
+        body {
+            font-weight: 400;
+            font-style: normal;
+            text-decoration: none;
+            text-transform: none;
+            letter-spacing: normal;
+            line-height: 1.15;
+            color: var(--dl-color-gray-black);
+            background-color: var(--dl-color-gray-white);
+
+        }
+    </style>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+        data-tag="font" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap"
+        data-tag="font" />
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <div>
+        <link href="./cadastro-vagas.css" rel="stylesheet" />
+        <div class="cadastro-vagas-container">
+            <div class="header-login-container header-login-root-class-name8">
+                <header data-role="Header" class="header-login-header">
+                    <div class="header-login-container1">
+                        <img alt="image" src="/public/everymind-png-200h.png" class="header-login-image" />
+                    </div>
+                </header>
+                <form class="header-login-form"></form>
+            </div>
+            <div id = "texto" class="cadastro-vagas-container1">
+                <div class="cadastro-vagas-pricing-card">
+                    <img alt="image" src="/public/2323-fotor-bg-remover-20230825105844-200h.png"
+                        class="cadastro-vagas-image" />
+                    <h1 class="cadastro-vagas-text">Cadastro de Vagas</h1>
+                    <span for="cargo" class="cadastro-vagas-text1">Cargo:</span>
+                    <input class="cadastro-vagas-textinput input" type="text" id="cargo" required><br>
+
+                    <span for="empresa" class="cadastro-vagas-text1">Nome da Empresa:</span>
+                    <input class="cadastro-vagas-textinput input" type="text" id="empresa" required><br>
+
+
+                    <span for="tipoVaga" class="cadastro-vagas-text5">Tipo de vaga</span>
+                    <select id="tipoVaga" class="cadastro-vagas-select">
+                        <option value="clt">CLT</option>
+                        <option value="autonomo">Autonomo</option>
+                        <option value="mei">MEI</option>
+                        <option value="empresario">Empresário</option>
+                        <option value="pj">PJ</option>
+                        <option value="estagio">Estágio</option>
+                        <option value="freelancer">Freelancer</option>
+                        <option value="temporario">Temporario</option>
+                    </select><br>
+
+                    <span for="descricao" class="cadastro-vagas-text2">Descrição:</span>
+                    <textarea id="descricao" class="cadastro-vagas-textarea textarea" required></textarea><br>
+                    <span for="deficiencia" class="cadastro-vagas-text3">Pessoas com deficiência:</span>
+                    <div class="cadastro-vagas-container2">
+                        <input type="checkbox" id="deficiencia"><br>
+                        <span class="cadastro-vagas-text4">Exclusivo para Pessoas com deficiência</span>
+                    </div>
+
+
+                    <span for="etnia" class="cadastro-vagas-text5">Etinia Social:</span>
+                    <select id="etnia" class="cadastro-vagas-select">
+                        <option value="selecionar">Selecionar</option>
+                        <option value="Negra">Negra</option>
+                        <option value="Parda">Parda</option>
+                        <option value="Amarela">Amarela</option>
+                        <option value="Indigena">Indígena</option>
+                    </select><br>
+
+                    <span for="sexo" class="cadastro-vagas-text5">Sexo:</span>
+                    <select id="sexo" class="cadastro-vagas-select">
+                        <option value="Seleciona">Selecionar</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Outros">Outros</option>
+                    </select><br>
+
+                    <button class="cadastro-vagas-button button" id="button_cadastrar"
+                        onclick="cadastrarVaga()">Cadastrar Vaga</button>
+                </div>
+            </div>
+
+
+
+            <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+            <script>
+                new window.VLibras.Widget('https://vlibras.gov.br/app');
+            </script>
+
+
+
+            <div vw class="enabled">
+                <div vw-access-button class="active"></div>
+                <div vw-plugin-wrapper>
+                    <div class="vw-plugin-top-wrapper"></div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="footer-container footer-root-class-name11">
+                <footer class="footer-footer">
+                    <img alt="image" src="public/everymind-png-200h.png" class="footer-image" />
+                    <span class="footer-text">
+                        <span>© 2023 Tech404, All Rights Reserved.</span>
+                    </span>
+                    <div class="footer-icon-group">
+                        <svg viewBox="0 0 950.8571428571428 1024" class="footer-icon">
+                            <path
+                                d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z">
+                            </path>
+                        </svg>
+                        <svg viewBox="0 0 877.7142857142857 1024" class="footer-icon2">
+                            <path
+                                d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z">
+                            </path>
+                        </svg>
+                        <svg viewBox="0 0 602.2582857142856 1024" class="footer-icon4">
+                            <path
+                                d="M548 6.857v150.857h-89.714c-70.286 0-83.429 33.714-83.429 82.286v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571c0-144.571 88.571-223.429 217.714-223.429 61.714 0 114.857 4.571 130.286 6.857z">
+                            </path>
+                        </svg>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const spans = document.querySelectorAll('#texto span');
+        let palavraAtual = 0;
+
+        // Função para ler a palavra atual
+        function lerPalavraAtual() {
+            if (palavraAtual < spans.length) {
+                const palavra = spans[palavraAtual].textContent;
+                const utterance = new SpeechSynthesisUtterance(palavra);
+                utterance.lang = 'pt-BR';
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // Detectar pressionamento da tecla Tab
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Tab') {
+                // Evitar o comportamento padrão da tecla Tab
+                event.preventDefault();
+
+                // Remover a classe de seleção da palavra anterior
+                if (palavraAtual <= spans.length) {
+                    spans[palavraAtual].classList.remove('selecionada');
+                }
+
+                // Avançar para a próxima palavra
+                palavraAtual++;
+
+                // Reiniciar quando atingir o final do texto
+                if (palavraAtual >= spans.length) {
+                    palavraAtual = 0;
+                }
+
+                // Adicionar a classe de seleção à palavra atual
+                spans[palavraAtual].classList.add('selecionada');
+
+                // Ler a palavra atual
+                lerPalavraAtual();
+            }
+        });
+    </script>
+
+    <style>
+        .selecionada {
+            background-color: yellow;
+        }
+    </style>
+
+
+</body>
+
+</html>
