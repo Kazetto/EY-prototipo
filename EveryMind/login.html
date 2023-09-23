@@ -221,17 +221,22 @@
     function login() {
       var email = document.getElementById("input_usuario").value;
       var password = document.getElementById("input_senha").value;
-
+    
       // Realiza o login com o Firebase Auth
       firebase.auth().signInWithEmailAndPassword(email, password)
         .then(function(userCredential) {
           var user = userCredential.user;
+          var uid = user.uid; // Obtem o UID do usuário
+    
+          // Agora você pode usar o UID como necessário
+          console.log("UID do usuário:", uid);
+    
           if (user.email.endsWith('@everymind.com.br')) {
             // Redireciona para a página de administração
-            window.location.href = "/menu-admin.html";
+            window.location.href = "/menu-admin.html?uid=" + uid;
           } else {
             // Redireciona para a página do cliente normal
-            window.location.href="/menu.html";
+            window.location.href = "/menu.html?uid=" + uid;
             //document.getElementById("loginStatus").innerHTML = "Usuário conectado: " + user.email;
           }
         })
@@ -241,6 +246,7 @@
           document.getElementById("loginStatus").innerHTML = "Erro de login: " + errorMessage;
         });
     }
+    
   </script>
 
 </body>
