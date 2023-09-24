@@ -1,0 +1,40 @@
+.card-teste-online-feature-card {
+  width: 100%;
+  display: flex;
+  padding: var(--dl-space-space-unit);
+  position: relative;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.card-teste-online-icon {
+  fill: var(--dl-color-gray-500);
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  margin-right: var(--dl-space-space-oneandhalfunits);
+}
+.card-teste-online-container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.card-teste-online-text {
+  font-weight: 600;
+  margin-bottom: var(--dl-space-space-unit);
+}
+
+@media(max-width: 767px) {
+  .card-teste-online-feature-card {
+    flex-direction: row;
+  }
+  .card-teste-online-container {
+    flex-direction: column;
+  }
+}
+@media(max-width: 479px) {
+  .card-teste-online-container {
+    flex-direction: column;
+  }
+}
