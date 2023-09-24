@@ -1,0 +1,66 @@
+//codigo de leitor de texto com TAB
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitor de Palavras com Tab</title>
+</head>
+<body>
+    <div id="texto">
+        <span>Esta</span>
+        <span>é</span>
+        <span>uma</span>
+        <span>frase</span>
+        <span>de</span>
+        <span>exemplo.</span>
+    </div>
+
+    <script>
+        const spans = document.querySelectorAll('#texto span');
+        let palavraAtual = 0;
+
+        // Função para ler a palavra atual
+        function lerPalavraAtual() {
+            if (palavraAtual < spans.length) {
+                const palavra = spans[palavraAtual].textContent;
+                const utterance = new SpeechSynthesisUtterance(palavra);
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // Detectar pressionamento da tecla Tab
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Tab') {
+                // Evitar o comportamento padrão da tecla Tab
+                event.preventDefault();
+
+                // Remover a classe de seleção da palavra anterior
+                if (palavraAtual < spans.length) {
+                    spans[palavraAtual].classList.remove('selecionada');
+                }
+
+                // Avançar para a próxima palavra
+                palavraAtual++;
+
+                // Reiniciar quando atingir o final do texto
+                if (palavraAtual >= spans.length) {
+                    palavraAtual = 0;
+                }
+
+                // Adicionar a classe de seleção à palavra atual
+                spans[palavraAtual].classList.add('selecionada');
+
+                // Ler a palavra atual
+                lerPalavraAtual();
+            }
+        });
+    </script>
+
+    <style>
+        .selecionada {
+            background-color: yellow;
+        }
+    </style>
+</body>
+</html>
