@@ -75,6 +75,14 @@
       });
     } 
 
+
+    function abrirVaga(vagaKey) {
+      // Aqui, vagaKey é a chave única da vaga que o usuário deseja abrir
+    
+      // Redirecionar o usuário para uma nova página com os detalhes da vaga
+      window.location.href = "/detalhes-vaga.html?key=" + vagaKey;
+    }
+
     function buscarPorNome() {
       var nomeDaVagaInput = document.getElementById("nomeDaVagaInput").value.trim();
       var listaCompleta = document.getElementById("listaCompleta");

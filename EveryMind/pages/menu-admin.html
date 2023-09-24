@@ -117,7 +117,20 @@
       background-color: var(--dl-color-gray-white);
 
     }
+    
+
+
   </style>
+  
+  <script>
+    function abrirVaga() {
+      // Aqui, vagaKey é a chave única da vaga que o usuário deseja abrir
+    
+      // Redirecionar o usuário para uma nova página com os detalhes da vaga
+      window.location.href = "/pages/ver-usuario.html";
+    }
+    </script>
+
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
     data-tag="font" />
@@ -142,7 +155,7 @@
       <div class="menu-admin-pricing">
         <div class="menu-admin-card">
           <span class="menu-admin-text">Verificar Usuário</span>
-          <button class="menu-admin-button button">VER</button>
+          <button onclick="abrirVaga()" class="menu-admin-button button">VER</button>
         </div>
         <div class="menu-admin-card1">
           <span class="menu-admin-text1">Editar Vagas</span>

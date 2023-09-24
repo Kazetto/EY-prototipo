@@ -32,10 +32,10 @@
         // Função para salvar uma vaga no Firebase
         function cadastrarVaga() {
             alert("Vaga adicionado com sucesso!!!");
-            var cargo = document.getElementById("cargo").value;
-            var empresa = document.getElementById("empresa").value;
-            var tipoVaga = document.getElementById("tipoVaga").value;
-            var descricao = document.getElementById("descricao").value;
+            var nome = document.getElementById("nome").value;
+            var sobrenome = document.getElementById("sobrenome").value;
+            var nomeSocial = document.getElementById("nomeSocial").value;
+            var resumoProfissional = document.getElementById("resumoProfissional").value;
             var deficiencia = document.getElementById("deficiencia").checked;
             var etnia = document.getElementById("etnia").value;
             var sexo = document.getElementById("sexo").value;
@@ -44,7 +44,7 @@
 
 
             // Obtém uma referência à lista de vagas
-            var vagasRef = database.ref("vagas");
+            var vagasRef = database.ref("usuarios");
 
             // Consulta o banco de dados para obter o ID mais alto existente
             vagasRef.orderByChild("id").limitToLast(1).once("value", function (snapshot) {
@@ -60,10 +60,10 @@
                 // Cria um objeto com os dados da vaga
                 var vaga = {
                     id: novoId,
-                    cargo: cargo,
-                    empresa: empresa,
-                    tipoVaga: tipoVaga,
-                    descricao: descricao,
+                    nome: nome,
+                    sobrenome: sobrenome,
+                    nomeSocial: nomeSocial,
+                    resumoProfissional: resumoProfissional,
                     deficiencia: deficiencia,
                     etnia: etnia,
                     sexo: sexo
@@ -74,15 +74,15 @@
                 vagasRef.push(vaga);
 
                 // Limpa o formulário após o envio
-                document.getElementById("cargo").value = "";
-                document.getElementById("empresa").value = "";
-                document.getElementById("tipoVaga").value = "";
-                document.getElementById("descricao").value = "";
+                document.getElementById("nome").value = "";
+                document.getElementById("sobrenome").value = "";
+                document.getElementById("nomeSocial").value = "";
+                document.getElementById("resumoProfissional").value = "";
                 document.getElementById("deficiencia").checked = false;
                 document.getElementById("etnia").value = "";
                 document.getElementById("sexo").value = "";
                 window.location.href =
-                    "/vagas-carreiras-admin.html"; // Define um valor padrão para cores raciais
+                "/pages/menu.html"; // Define um valor padrão para cores raciais
             });
         }
         // Função para listar e exibir vagas
@@ -96,10 +96,10 @@
                 snapshot.forEach(function (childSnapshot) {
                     var vaga = childSnapshot.val();
                     var li = document.createElement("li");
-                    li.innerHTML = "<strong>Cargo:</strong> " + vaga.cargo +
-                        "<br><strong>Empresa:</strong> " + vaga.empresa +
-                        "<br><strong>Tipo de Vaga:</strong> " + vaga.tipoVaga +
-                        "<br><strong>Descrição:</strong> " + vaga.descricao +
+                    li.innerHTML = "<strong>nome:</strong> " + vaga.nome +
+                        "<br><strong>sobrenome:</strong> " + vaga.sobrenome +
+                        "<br><strong>Tipo de Vaga:</strong> " + vaga.nomeSocial +
+                        "<br><strong>Descrição:</strong> " + vaga.resumoProfissional +
                         "<br><strong>Pessoas com Deficiências:</strong> " + (vaga.deficiencia ? "Sim" :
                             "Não") +
                         "<br><strong>Etnia Social:</strong> " + vaga.etnia +
@@ -108,6 +108,8 @@
                 });
             });
         }
+
+        
     </script>
 
     <style data-tag="reset-style-sheet">
@@ -246,31 +248,22 @@
                     <img alt="image" src="../public/2323-fotor-bg-remover-20230825105844-200h.png"
                         class="cadastro-vagas-image" />
                     <h1 class="cadastro-vagas-text">Cadastro de Vagas</h1>
-                    <span for="cargo" class="cadastro-vagas-text1">Cargo:</span>
-                    <input class="cadastro-vagas-textinput input" type="text" id="cargo" required><br>
+                    <span for="nome" class="cadastro-vagas-text1">Nome:</span>
+                    <input class="cadastro-vagas-textinput input" type="text" id="nome" required><br>
 
-                    <span for="empresa" class="cadastro-vagas-text1">Nome da Empresa:</span>
-                    <input class="cadastro-vagas-textinput input" type="text" id="empresa" required><br>
+                    <span for="sobrenome" class="cadastro-vagas-text1">Sobrenome:</span>
+                    <input class="cadastro-vagas-textinput input" type="text" id="sobrenome" required><br>
 
 
-                    <span for="tipoVaga" class="cadastro-vagas-text5">Tipo de vaga</span>
-                    <select id="tipoVaga" class="cadastro-vagas-select">
-                        <option value="clt">CLT</option>
-                        <option value="autonomo">Autonomo</option>
-                        <option value="mei">MEI</option>
-                        <option value="empresario">Empresário</option>
-                        <option value="pj">PJ</option>
-                        <option value="estagio">Estágio</option>
-                        <option value="freelancer">Freelancer</option>
-                        <option value="temporario">Temporario</option>
-                    </select><br>
+                    <span for="nomeSocial" class="cadastro-vagas-text5">Nome Social(Opcional)</span>
+                    <input id="nomeSocial" class="cadastro-vagas-textinput input" type="text" required><br>
 
-                    <span for="descricao" class="cadastro-vagas-text2">Descrição:</span>
-                    <textarea id="descricao" class="cadastro-vagas-textarea textarea" required></textarea><br>
-                    <span for="deficiencia" class="cadastro-vagas-text3">Pessoas com deficiência:</span>
+                    <span for="resumoProfissional" class="cadastro-vagas-text2">Resumo Profissional:</span>
+                    <textarea id="resumoProfissional" class="cadastro-vagas-textarea textarea" required></textarea><br>
+                    <span for="deficiencia" class="cadastro-vagas-text3">Você tem deficiência:</span>
                     <div class="cadastro-vagas-container2">
                         <input type="checkbox" id="deficiencia"><br>
-                        <span class="cadastro-vagas-text4">Exclusivo para Pessoas com deficiência</span>
+                        <span class="cadastro-vagas-text4">Pessoas com deficiência</span>
                     </div>
 
 
@@ -287,7 +280,7 @@
                     <span for="sexo" class="cadastro-vagas-text5">Sexo:</span>
                     <select id="sexo" class="cadastro-vagas-select">
                         <option value="Seleciona">Selecionar</option>
-                        <option value="Todos">Todos</option>
+                        <option value="Masculino">Masculino</option>
                         <option value="Feminino">Feminino</option>
                         <option value="Outros">Prefiro não responder</option>
                     </select><br>

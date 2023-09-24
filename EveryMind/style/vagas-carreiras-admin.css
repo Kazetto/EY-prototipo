@@ -17,6 +17,11 @@
   font-size: 30px;
   margin-left: var(--dl-space-space-twounits);
 }
+
+.navigation-links-admin-text1{
+  font-size: 30px;
+  margin-left: var(--dl-space-space-twounits);
+}
 .navigation-links-admin-navlink1 {
   font-size: 30px;
   margin-left: var(--dl-space-space-twounits);
@@ -328,7 +333,7 @@
   justify-content: flex-start;
 }
 .vagas-carreiras-admin-text1 {
-  font-size: 3rem;
+  font-size: 1rem;
   margin-bottom: var(--dl-space-space-threeunits);
 }
 .vagas-carreiras-admin-container1 {
