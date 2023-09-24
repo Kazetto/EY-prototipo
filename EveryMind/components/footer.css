@@ -69,9 +69,8 @@
   width: 100%;
   align-self: center;
 }
-.footer-root-class-name10 {
-  height: auto;
-}
+
+
 
 
 @media(max-width: 1600px) {
@@ -90,12 +89,10 @@
 }
 @media(max-width: 767px) {
   .footer-footer {
-    align-self: center;
     padding-left: var(--dl-space-space-twounits);
     padding-right: var(--dl-space-space-twounits);
   }
   .footer-text {
-    align-self: center;
     text-align: center;
     margin-left: var(--dl-space-space-unit);
     margin-right: var(--dl-space-space-unit);

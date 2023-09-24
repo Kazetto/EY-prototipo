@@ -68,6 +68,11 @@
 .logos-root-class-name1 {
   align-self: center;
 }
+@media(max-width: 1600px) {
+  .logos-root-class-name1 {
+    width: 100%;
+  }
+}
 @media(max-width: 1200px) {
   .logos-feature-card {
     padding-bottom: 32px;
@@ -93,7 +98,7 @@
     margin-right: var(--dl-space-space-oneandhalfunits);
   }
   .logos-root-class-name1 {
-    width: 1000px;
+    width: 100%;
   }
 }
 @media(max-width: 991px) {
@@ -117,6 +122,9 @@
     margin-left: var(--dl-space-space-halfunit);
     margin-right: var(--dl-space-space-halfunit);
   }
+  .logos-root-class-name1 {
+    flex: 1;
+  }
 }
 @media(max-width: 767px) {
   .logos-image {
@@ -138,5 +146,10 @@
   .logos-image4 {
     margin-left: 0px;
     margin-right: 0px;
+  }
+}
+@media(max-width: 479px) {
+  .logos-root-class-name1 {
+    flex: 1;
   }
 }

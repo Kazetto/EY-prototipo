@@ -1,0 +1,386 @@
+.header-login-container {
+  width: 100%;
+  height: 105px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.header-login-header {
+  width: 100%;
+  height: 99px;
+  display: flex;
+  max-width: auto;
+  align-items: center;
+  padding-top: var(--dl-space-space-twounits);
+  padding-left: var(--dl-space-space-threeunits);
+  padding-right: var(--dl-space-space-threeunits);
+  padding-bottom: var(--dl-space-space-twounits);
+  justify-content: space-between;
+  background-color: #ffffff;
+}
+.header-login-container1 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: space-between;
+  flex-direction: column;
+}
+.header-login-image {
+  width: var(--dl-size-size-large);
+  object-fit: cover;
+}
+.header-login-form {
+  width: 100%;
+  height: 8px;
+  display: flex;
+  background-image: linear-gradient(90deg, rgb(12, 162, 6) 1.00%,rgb(0, 181, 222) 100.00%);
+}
+
+
+
+
+
+
+
+
+
+@media(max-width: 767px) {
+  .header-login-header {
+    padding-left: var(--dl-space-space-twounits);
+    padding-right: var(--dl-space-space-twounits);
+  }
+}
+@media(max-width: 479px) {
+  .header-login-header {
+    height: auto;
+    padding: var(--dl-space-space-unit);
+  }
+}
+
+.button-links-admin-nav {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.button-links-admin-button {
+  margin-left: var(--dl-space-space-unit);
+  margin-right: var(--dl-space-space-unit);
+  background-color: var(--dl-color-primary-700);
+}
+.button-links-admin-navlink {
+  margin-left: var(--dl-space-space-unit);
+  margin-right: var(--dl-space-space-unit);
+  text-decoration: none;
+  background-color: var(--dl-color-success-700);
+}
+
+@media(max-width: 767px) {
+  .button-links-admin-nav {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+@media(max-width: 479px) {
+  .button-links-admin-nav {
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+.card-vagas1-feature-card {
+  width: auto;
+  display: flex;
+  padding: var(--dl-space-space-unit);
+  position: relative;
+  box-shadow: 5px 5px 10px 0px #466277;
+  align-items: flex-start;
+  border-color: var(--dl-color-gray-black);
+  border-width: 2px;
+  border-radius: var(--dl-radius-radius-radius8);
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: var(--dl-color-gray-white);
+}
+.card-vagas1-icon {
+  fill: var(--dl-color-gray-500);
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  margin-right: var(--dl-space-space-oneandhalfunits);
+}
+.card-vagas1-container {
+  width: 610px;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.card-vagas1-button {
+  align-self: stretch;
+  margin-top: var(--dl-space-space-oneandhalfunits);
+  transition: 0.3s;
+  margin-left: var(--dl-space-space-oneandhalfunits);
+  margin-right: var(--dl-space-space-oneandhalfunits);
+  margin-bottom: var(--dl-space-space-oneandhalfunits);
+  background-color: var(--dl-color-primary-700);
+}
+.card-vagas1-button:hover {
+  margin-top: var(--dl-space-space-oneandhalfunits);
+  margin-bottom: var(--dl-space-space-oneandhalfunits);
+}
+.card-vagas1-button1 {
+  align-self: stretch;
+  margin-left: var(--dl-space-space-unit);
+  margin-right: var(--dl-space-space-unit);
+  background-color: var(--dl-color-primary-500);
+}
+.card-vagas1-button2 {
+  margin-left: var(--dl-space-space-unit);
+  margin-right: var(--dl-space-space-unit);
+  background-color: var(--dl-color-danger-700);
+}
+
+
+
+
+
+
+@media(max-width: 1600px) {
+  .card-vagas1-feature-card {
+    width: auto;
+    height: auto;
+    margin: 10px;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+  }
+  .card-vagas1-icon {
+    margin: var(--dl-space-space-halfunit);
+  }
+  .card-vagas1-container {
+    height: 250px;
+  }
+}
+@media(max-width: 767px) {
+  .card-vagas1-feature-card {
+    flex-direction: row;
+  }
+}
+
+.footer-container {
+  width: 100%;
+  height: 89px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.footer-footer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  max-width: 100%;
+  max-height: auto;
+  min-height: auto;
+  align-items: center;
+  padding-top: var(--dl-space-space-twounits);
+  padding-left: var(--dl-space-space-threeunits);
+  padding-right: var(--dl-space-space-threeunits);
+  padding-bottom: var(--dl-space-space-twounits);
+  justify-content: space-between;
+  background-color: #ffffff;
+}
+.footer-image {
+  width: var(--dl-size-size-large);
+  object-fit: cover;
+}
+.footer-text {
+  color: #000000;
+}
+.footer-icon-group {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.footer-icon {
+  fill: var(--dl-color-gray-white);
+  width: var(--dl-size-size-small);
+  height: 25px;
+  margin-right: var(--dl-space-space-twounits);
+}
+.footer-icon2 {
+  fill: var(--dl-color-gray-white);
+  width: var(--dl-size-size-small);
+  height: 25px;
+  margin-right: var(--dl-space-space-twounits);
+}
+.footer-icon4 {
+  fill: var(--dl-color-gray-white);
+  width: var(--dl-size-size-small);
+  height: 25px;
+}
+.footer-root-class-name {
+  height: auto;
+}
+.footer-root-class-name1 {
+  width: 100%;
+  align-self: center;
+}
+
+
+
+
+
+
+
+.footer-root-class-name9 {
+  width: 100%;
+  align-self: center;
+}
+
+
+@media(max-width: 767px) {
+  .footer-footer {
+    padding-left: var(--dl-space-space-twounits);
+    padding-right: var(--dl-space-space-twounits);
+  }
+  .footer-text {
+    text-align: center;
+    margin-left: var(--dl-space-space-unit);
+    margin-right: var(--dl-space-space-unit);
+  }
+}
+@media(max-width: 479px) {
+  .footer-footer {
+    padding: var(--dl-space-space-unit);
+    flex-direction: column;
+  }
+  .footer-text {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+}
+
+.vagas-carreiras-admin-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.vagas-carreiras-admin-features {
+  width: 90%;
+  display: flex;
+  padding: var(--dl-space-space-threeunits);
+  max-width: 100%;
+  flex-direction: column;
+}
+.vagas-carreiras-admin-text {
+  font-size: 3rem;
+  margin-bottom: var(--dl-space-space-threeunits);
+}
+.vagas-carreiras-admin-features1 {
+  width: auto;
+  display: flex;
+  padding: var(--dl-space-space-threeunits);
+  max-width: 100%;
+  flex-direction: column;
+}
+.vagas-carreiras-admin-text1 {
+  font-size: 3rem;
+  margin-bottom: var(--dl-space-space-threeunits);
+}
+.vagas-carreiras-admin-container1 {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.vagas-carreiras-admin-textinput {
+  margin-left: var(--dl-space-space-oneandhalfunits);
+  margin-right: var(--dl-space-space-oneandhalfunits);
+}
+.vagas-carreiras-admin-container2 {
+  width: 1450px;
+  display: grid;
+  grid-gap: var(--dl-space-space-twounits);
+  grid-template-columns: 1fr 1fr;
+}
+@media(max-width: 1600px) {
+  .vagas-carreiras-admin-features {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .vagas-carreiras-admin-features1 {
+    width: auto;
+    height: auto;
+    max-width: auto;
+  }
+  .vagas-carreiras-admin-textinput {
+    margin-left: var(--dl-space-space-twounits);
+    margin-right: var(--dl-space-space-twounits);
+  }
+  .vagas-carreiras-admin-container2 {
+    width: auto;
+    height: auto;
+    align-self: center;
+  }
+}
+@media(max-width: 1200px) {
+  .vagas-carreiras-admin-features {
+    flex-direction: column;
+  }
+  .vagas-carreiras-admin-features1 {
+    width: 1116px;
+    height: 528px;
+    align-items: stretch;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .vagas-carreiras-admin-container2 {
+    width: auto;
+    height: auto;
+    align-self: flex-start;
+  }
+}
+@media(max-width: 767px) {
+  .vagas-carreiras-admin-features {
+    padding-left: var(--dl-space-space-twounits);
+    padding-right: var(--dl-space-space-twounits);
+  }
+  .vagas-carreiras-admin-features1 {
+    padding-left: var(--dl-space-space-twounits);
+    padding-right: var(--dl-space-space-twounits);
+  }
+  .vagas-carreiras-admin-container2 {
+    grid-template-columns: 1fr;
+  }
+}
+@media(max-width: 479px) {
+  .vagas-carreiras-admin-features {
+    padding-top: var(--dl-space-space-twounits);
+    padding-left: var(--dl-space-space-unit);
+    padding-right: var(--dl-space-space-unit);
+    padding-bottom: var(--dl-space-space-twounits);
+  }
+  .vagas-carreiras-admin-features1 {
+    padding-top: var(--dl-space-space-twounits);
+    padding-left: var(--dl-space-space-unit);
+    padding-right: var(--dl-space-space-unit);
+    padding-bottom: var(--dl-space-space-twounits);
+  }
+}

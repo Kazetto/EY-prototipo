@@ -133,6 +133,11 @@
 
 
 
+@media(max-width: 991px) {
+  .header-root-class-name {
+    flex: 1;
+  }
+}
 @media(max-width: 767px) {
   .header-header {
     padding-left: var(--dl-space-space-twounits);

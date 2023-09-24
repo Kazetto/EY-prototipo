@@ -27,9 +27,13 @@
   align-items: space-between;
   flex-direction: column;
 }
+.header-login-navlink {
+  display: contents;
+}
 .header-login-image {
   width: var(--dl-size-size-large);
   object-fit: cover;
+  text-decoration: none;
 }
 .header-login-form {
   width: 100%;
@@ -37,7 +41,6 @@
   display: flex;
   background-image: linear-gradient(90deg, rgb(12, 162, 6) 1.00%,rgb(0, 181, 222) 100.00%);
 }
-
 
 
 
