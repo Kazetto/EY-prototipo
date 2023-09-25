@@ -48,34 +48,36 @@
 
     function listarVagas() {
       var vagasRef = database.ref("vagas");
-
-      vagasRef.on("value", function(snapshot) {
+    
+      vagasRef.on("value", function (snapshot) {
         var lista = document.getElementById("vaga-list");
         lista.innerHTML = "";
-
-        snapshot.forEach(function(childSnapshot) {
+    
+        snapshot.forEach(function (childSnapshot) {
           var vaga = childSnapshot.val();
           var card = document.createElement("div");
           card.classList.add("card");
-
-          // Preencha o cartão com informações da vaga
+    
+          // Limitar a descrição a 100 caracteres
+          var descricaoLimitada = vaga.descricao.length > 100 ? vaga.descricao.slice(0, 100) + "..." : vaga.descricao;
+    
+          // Preencha o cartão com informações da vaga, incluindo a descrição limitada
           card.innerHTML = `
             <h2>${vaga.cargo}</h2>
             ${vaga.empresa}<br><br>
             <strong>Tipo da Vaga:</strong> ${vaga.tipoVaga}<br><br>
-            <strong>Descrição:</strong> ${vaga.descricao}<br><br>
+            <strong>Descrição:</strong> ${descricaoLimitada}<br><br>
             <strong>Salário:</strong> ${vaga.salario}<br><br>
             <strong>Exclusivas para Pessoas com Deficiências:</strong> ${vaga.deficiencia ? "Sim" : "Não"}<br><br>
             <strong>Exclusivas para Etnia Social:</strong> ${vaga.etnia}<br><br>
+            <strong>Sexo:</strong> ${vaga.sexo}
             <button class="button_Abrir" onclick="abrirVaga('${childSnapshot.key}')">Abrir</button>
-
           `;
-
+    
           lista.appendChild(card);
         });
       });
-    } 
-
+    }
     function abrirVaga(vagaKey) {
       // Aqui, vagaKey é a chave única da vaga que o usuário deseja abrir
     
