@@ -36,6 +36,7 @@
             var empresa = document.getElementById("empresa").value;
             var tipoVaga = document.getElementById("tipoVaga").value;
             var descricao = document.getElementById("descricao").value;
+            var salario = document.getElementById("salario").value;
             var deficiencia = document.getElementById("deficiencia").checked;
             var etnia = document.getElementById("etnia").value;
             var sexo = document.getElementById("sexo").value;
@@ -64,6 +65,7 @@
                     empresa: empresa,
                     tipoVaga: tipoVaga,
                     descricao: descricao,
+                    salario: salario,
                     deficiencia: deficiencia,
                     etnia: etnia,
                     sexo: sexo
@@ -78,11 +80,12 @@
                 document.getElementById("empresa").value = "";
                 document.getElementById("tipoVaga").value = "";
                 document.getElementById("descricao").value = "";
+                document.getElementById("salario").value = "";
                 document.getElementById("deficiencia").checked = false;
                 document.getElementById("etnia").value = "";
                 document.getElementById("sexo").value = "";
                 window.location.href =
-                    "/vagas-carreiras-admin.html"; // Define um valor padrão para cores raciais
+                    "/pages/vagas-carreiras-admin.html"; // Define um valor padrão para cores raciais
             });
         }
         // Função para listar e exibir vagas
@@ -100,6 +103,7 @@
                         "<br><strong>Empresa:</strong> " + vaga.empresa +
                         "<br><strong>Tipo de Vaga:</strong> " + vaga.tipoVaga +
                         "<br><strong>Descrição:</strong> " + vaga.descricao +
+                        "<br><strong>Salário:</strong> " + vaga.salario +
                         "<br><strong>Pessoas com Deficiências:</strong> " + (vaga.deficiencia ? "Sim" :
                             "Não") +
                         "<br><strong>Etnia Social:</strong> " + vaga.etnia +
@@ -241,7 +245,7 @@
                 </header>
                 <form class="header-login-form"></form>
             </div>
-            <div id = "texto" class="cadastro-vagas-container1">
+            <div id="texto" class="cadastro-vagas-container1">
                 <div class="cadastro-vagas-pricing-card">
                     <img alt="image" src="../public/2323-fotor-bg-remover-20230825105844-200h.png"
                         class="cadastro-vagas-image" />
@@ -267,6 +271,10 @@
 
                     <span for="descricao" class="cadastro-vagas-text2">Descrição:</span>
                     <textarea id="descricao" class="cadastro-vagas-textarea textarea" required></textarea><br>
+                    <span for="salario" class="cadastro-vagas-text2">Salário:</span>
+                    <textarea id="salario" class="cadastro-vagas-textarea textarea" required></textarea><br>
+
+
                     <span for="deficiencia" class="cadastro-vagas-text3">Pessoas com deficiência:</span>
                     <div class="cadastro-vagas-container2">
                         <input type="checkbox" id="deficiencia"><br>

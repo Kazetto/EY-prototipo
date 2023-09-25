@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-  <title>VagasCarreirasAdmin - everymind-prototipo</title>
-  <meta property="og:title" content="VagasCarreirasAdmin - everymind-prototipo" />
+  <title>Usuarios Carreiras Admin - Everymind-prototipo</title>
+  <meta property="og:title" content="usuariosCarreirasAdmin - everymind-prototipo" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="utf-8" />
   <meta property="twitter:card" content="summary_large_image" />
@@ -84,159 +84,40 @@
 
 
 
-    function abrirFormularioAlteracao(chave) {
-      var vagaRef = database.ref("vagas/" + chave);
-      window.location.href = `/pages/alterar-vagas.html?chave=${chave}`;
+    // Obtém a chave da vaga da URL
+    var urlParams = new URLSearchParams(window.location.search);
+    var vagaKey = urlParams.get('key');
 
-      vagaRef.once("value", function (snapshot) {
+    // Referência ao banco de dados do Firebase
+    var database = firebase.database();
+
+    // Consulta a vaga específica com base na chave
+    var vagaRef = database.ref("vagas/" + vagaKey);
+
+    // Recupera os detalhes da vaga
+    vagaRef.once("value")
+      .then(function (snapshot) {
         var vaga = snapshot.val();
-        document.getElementById("cargo").value = vaga.cargo;
-        document.getElementById("empresa").value = vaga.empresa;
-        document.getElementById("tipoVaga").value = vaga.tipoVaga;
-        document.getElementById("descricao").value = vaga.descricao;
-        document.getElementById("salario").value = vaga.salario;
-        document.getElementById("deficiencia").checked = vaga.deficiencia;
-        document.getElementById("corRacial").value = vaga.corRacial;
-        document.getElementById("genero").value = vaga.genero;
-
-
+        if (vaga) {
+          // Preencha os elementos HTML na página com os detalhes da vaga
+          document.getElementById("cargo").innerHTML = vaga.cargo;
+          document.getElementById("empresa").innerHTML = vaga.empresa;
+          document.getElementById("tipoVaga").innerHTML = vaga.tipoVaga;
+          document.getElementById("descricao").innerHTML = vaga.descricao;
+          document.getElementById("deficiencia").innerHTML = vaga.deficiencia ? "Sim" : "Não";
+          document.getElementById("etnia").innerHTML = vaga.etnia;
+        } else {
+          // Se a vaga não for encontrada, exiba uma mensagem de erro
+          document.getElementById("detalhes").innerHTML = "Vaga não encontrada.";
+        }
+      })
+      .catch(function (error) {
+        console.error("Erro ao recuperar detalhes da vaga:", error);
       });
-    };
-    // Função para listar e exibir vagas
-    function listarVagas() {
-      var vagasRef = database.ref("vagas");
-    
-      vagasRef.on("value", function (snapshot) {
-        var lista = document.getElementById("vaga-list");
-        lista.innerHTML = "";
-    
-        snapshot.forEach(function (childSnapshot) {
-          var vaga = childSnapshot.val();
-          var card = document.createElement("div");
-          card.classList.add("card");
-    
-          // Limitar a descrição a 100 caracteres
-          var descricaoLimitada = vaga.descricao.length > 100 ? vaga.descricao.slice(0, 100) + "..." : vaga.descricao;
-    
-          // Preencha o cartão com informações da vaga, incluindo a descrição limitada
-          card.innerHTML = `
-            <h2>${vaga.cargo}</h2>
-            ${vaga.empresa}<br><br>
-            <strong>Tipo da Vaga:</strong> ${vaga.tipoVaga}<br><br>
-            <strong>Descrição:</strong> ${descricaoLimitada}<br><br>
-            <strong>Salário:</strong> ${vaga.salario}<br><br>
-            <strong>Exclusivas para Pessoas com Deficiências:</strong> ${vaga.deficiencia ? "Sim" : "Não"}<br><br>
-            <strong>Exclusivas para Etnia Social:</strong> ${vaga.etnia}<br><br>
-            <strong>Sexo:</strong> ${vaga.sexo}
-            <button class="button_Excluir" onclick="excluirVaga('${childSnapshot.key}')">Excluir</button>
-            <button class="button_Alterar" onclick="abrirFormularioAlteracao('${childSnapshot.key}')">Alterar</button>
-            <button class="button_Abrir" onclick="abrirVaga('${childSnapshot.key}')">Abrir</button>
-          `;
-    
-          lista.appendChild(card);
-        });
-      });
-    }
 
 
 
-    function excluirVaga(chave) {
-      if (confirm("Tem certeza de que deseja excluir esta vaga?")) {
-        // Obtém a referência à vaga que deseja excluir
-        var vagaRef = database.ref("vagas/" + chave);
 
-        // Remove a vaga do Firebase
-        vagaRef.remove()
-          .then(function () {
-            alert("Vaga excluída com sucesso!");
-          })
-          .catch(function (error) {
-            console.error("Erro ao excluir vaga: " + error);
-          });
-      }
-    }
-
-
-    function buscarPorNome() {
-      var nomeDaVagaInput = document.getElementById("nomeDaVagaInput").value.trim();
-      var listaCompleta = document.getElementById("listaCompleta");
-      var resultadosPesquisa = document.getElementById("resultadosPesquisa");
-
-      var vagasRef = database.ref("vagas");
-
-      vagasRef.once("value")
-        .then(function (snapshot) {
-          var listaCompletaResultado = document.getElementById("resultadoListaCompleta");
-          var resultadoPesquisa = document.getElementById("resultadoPesquisa");
-
-          listaCompletaResultado.innerHTML = ""; // Limpar a lista completa antes de preenchê-la novamente.
-          resultadoPesquisa.innerHTML = ""; // Limpar os resultados da pesquisa antes de preenchê-los novamente.
-
-          snapshot.forEach(function (childSnapshot) {
-            var vaga = childSnapshot.val();
-            var nomeDaVaga = vaga.cargo.toLowerCase();
-
-            if (nomeDaVagaInput === "") {
-              var card = document.createElement("div");
-              card.classList.add("card");
-
-              // Preencha o cartão com informações da vaga para a lista completa
-              card.innerHTML = `
-                            <h2>${vaga.cargo}</h2>
-                            ${vaga.empresa}<br><br>
-                            <strong>Tipo da Vaga:</strong> ${vaga.tipoVaga}<br><br>
-                            <strong>Descrição:</strong> ${vaga.descricao}<br><br>
-                            <strong>Salário:</strong> ${vaga.salario}<br><br>
-                            <strong>Exclusivas para Pessoas com Deficiências:</strong> ${vaga.deficiencia ? "Sim" : "Não"}<br><br>
-                            <strong>Exclusivas para Etnia Social:</strong> ${vaga.etnia}<br><br>
-                            <button class="button_Excluir" onclick="excluirVaga('${childSnapshot.key}')">Excluir</button>
-                            <button class="button_Alterar" onclick="abrirFormularioAlteracao('${childSnapshot.key}')">Alterar</button>
-                        `;
-
-              listaCompletaResultado.appendChild(card);
-            } else if (nomeDaVaga.includes(nomeDaVagaInput.toLowerCase())) {
-              var card = document.createElement("div");
-              card.classList.add("card");
-
-              // Preencha o cartão com informações da vaga para os resultados da pesquisa
-              card.innerHTML = `
-                            <h2>${vaga.cargo}</h2>
-                            ${vaga.empresa}<br><br>
-                            <strong>Tipo da Vaga:</strong> ${vaga.tipoVaga}<br><br>
-                            <strong>Descrição:</strong> ${vaga.descricao}<br><br>
-                            <strong>Salário:</strong> ${vaga.salario}<br><br>
-                            <strong>Exclusivas para Pessoas com Deficiências:</strong> ${vaga.deficiencia ? "Sim" : "Não"}<br><br>
-                            <strong>Exclusivas para Etnia Social:</strong> ${vaga.etnia}<br><br>
-                            <button class="button_Excluir" onclick="excluirVaga('${childSnapshot.key}')">Excluir</button>
-                            <button class="button_Alterar" onclick="abrirFormularioAlteracao('${childSnapshot.key}')">Alterar</button>
-                        `;
-
-              resultadoPesquisa.appendChild(card);
-            }
-          });
-
-          // Mostrar ou ocultar as divs com base no resultado da pesquisa
-          if (nomeDaVagaInput === "") {
-            listaCompleta.style.display = "block";
-            resultadosPesquisa.style.display = "none";
-          } else {
-            listaCompleta.style.display = "none";
-            resultadosPesquisa.style.display = "block";
-          }
-        })
-        .catch(function (error) {
-          console.error("Erro ao buscar vagas: " + error.message);
-        });
-    }
-
-
-
-    function abrirVaga(vagaKey) {
-      // Aqui, vagaKey é a chave única da vaga que o usuário deseja abrir
-
-      // Redirecionar o usuário para uma nova página com os detalhes da vaga
-      window.location.href = "/pages/detalhes-vaga.html?key=" + vagaKey;
-    }
 
 
   </script>
@@ -362,7 +243,7 @@
 <body>
   <div>
     <link href="../style/vagas-carreiras-admin.css" rel="stylesheet" />
-    <div class="vagas-carreiras-admin-container">
+    <div class="usuarios-carreiras-admin-container">
       <div class="header-admin-container header-admin-root-class-name">
         <header data-role="Header" class="header-admin-header">
           <div class="header-admin-container1">
@@ -375,8 +256,8 @@
               <a href="./cadastro-vagas.html" class="navigation-links-admin-navlink">
                 <span>CADASTRAR</span>
               </a>
-              <a href="./vagas-carreiras-admin.html" class="navigation-links-admin-text1">
-                <span>VER VAGAS</span>
+              <a href="./ver-usuario.html" class="navigation-links-admin-text1">
+                <span>VER USUARIO</span>
               </a>
               <a href="./menu-admin.html" class="navigation-links-admin-navlink">
                 <span>CARREIRAS</span>
@@ -387,37 +268,18 @@
         <form class="header-admin-form"></form>
       </div>
       <div class="vagas-carreiras-admin-features">
-        <h1 class="vagas-carreiras-admin-text">Carreiras</h1><br><br>
+        <h1 class="vagas-carreiras-admin-text">Detalhes da Vaga</h1><br><br>
         <div class="vagas-carreiras-admin-features1">
-          <h1 class="vagas-carreiras-admin-text1">Vagas da EveryMind</h1>
           <div class="vagas-carreiras-admin-container1">
-            <select>
-              <option value="Todos" selected>Todos</option>
-            </select>
-            <input type="text" placeholder="Nome da vaga" class="vagas-carreiras-admin-textinput input"
-              id="nomeDaVagaInput" oninput="buscarPorNome()" />
-            <nav class="button-links-admin-nav button-links-admin-root-class-name">
-
-              <a href="cadastro-vagas.html" id="button_adc" class="button-links-admin-navlink button">
-                <span>Adicionar</span>
-              </a>
-            </nav>
+            <div id="detalhes">
+              <h2>Cargo: <span id="cargo"></span></h2>
+              <p>Empresa: <span id="empresa"></span></p>
+              <p>Tipo da Vaga: <span id="tipoVaga"></span></p>
+              <p>Descrição: <span id="descricao"></span></p>
+              <p>Salario: <span id="salario"></span></p>
+              <p>Exclusivas para Pessoas com Deficiências: <span id="deficiencia"></span></p>
+              <p>Exclusivas para Etnia Social: <span id="etnia"></span></p>
           </div>
-
-          <div id="ColunasCard" class="vagas-carreiras-admin-colunascard">
-            <div id="listaCompleta" style="display: block;">
-              <h3>Lista Completa de Vagas:</h3>
-              <div id="resultadoListaCompleta">
-                <div id="vaga-list">
-                  <script>listarVagas();</script>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Div para mostrar os resultados da pesquisa -->
-          <div id="resultadosPesquisa" style="display: none;">
-            <h3>Resultados da Pesquisa:</h3>
-            <div id="resultadoPesquisa"></div>
           </div>
         </div>
       </div>

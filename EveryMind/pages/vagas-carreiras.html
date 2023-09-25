@@ -64,6 +64,7 @@
             ${vaga.empresa}<br><br>
             <strong>Tipo da Vaga:</strong> ${vaga.tipoVaga}<br><br>
             <strong>Descrição:</strong> ${vaga.descricao}<br><br>
+            <strong>Salário:</strong> ${vaga.salario}<br><br>
             <strong>Exclusivas para Pessoas com Deficiências:</strong> ${vaga.deficiencia ? "Sim" : "Não"}<br><br>
             <strong>Exclusivas para Etnia Social:</strong> ${vaga.etnia}<br><br>
             <button class="button_Abrir" onclick="abrirVaga('${childSnapshot.key}')">Abrir</button>
@@ -75,12 +76,11 @@
       });
     } 
 
-
     function abrirVaga(vagaKey) {
       // Aqui, vagaKey é a chave única da vaga que o usuário deseja abrir
     
       // Redirecionar o usuário para uma nova página com os detalhes da vaga
-      window.location.href = "/detalhes-vaga.html?key=" + vagaKey;
+      window.location.href = "/pages/detalhes-vaga.html?key=" + vagaKey;
     }
 
     function buscarPorNome() {
@@ -112,6 +112,7 @@
                             ${vaga.empresa}<br><br>
                             <strong>Tipo da Vaga:</strong> ${vaga.tipoVaga}<br><br>
                             <strong>Descrição:</strong> ${vaga.descricao}<br><br>
+                            <strong>Salário:</strong> ${vaga.salario}<br><br>
                             <strong>Exclusivas para Pessoas com Deficiências:</strong> ${vaga.deficiencia ? "Sim" : "Não"}<br><br>
                             <strong>Exclusivas para Etnia Social:</strong> ${vaga.etnia}<br><br>
                             <button class="button_Excluir" onclick="excluirVaga('${childSnapshot.key}')">Excluir</button>
@@ -129,6 +130,7 @@
                             ${vaga.empresa}<br><br>
                             <strong>Tipo da Vaga:</strong> ${vaga.tipoVaga}<br><br>
                             <strong>Descrição:</strong> ${vaga.descricao}<br><br>
+                            <strong>Salário:</strong> ${vaga.salario}<br><br>
                             <strong>Exclusivas para Pessoas com Deficiências:</strong> ${vaga.deficiencia ? "Sim" : "Não"}<br><br>
                             <strong>Exclusivas para Etnia Social:</strong> ${vaga.etnia}<br><br>
                             <button class="button_Excluir" onclick="excluirVaga('${childSnapshot.key}')">Excluir</button>
