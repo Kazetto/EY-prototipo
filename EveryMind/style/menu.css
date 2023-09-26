@@ -42,9 +42,27 @@
   background-image: linear-gradient(90deg, rgb(12, 162, 6) 1.00%,rgb(0, 181, 222) 100.00%);
 }
 
+.logout-text {
+  color: rgb(0, 0, 0);
+  font-size: 2rem;
+  align-self: stretch;
+  font-style: normal;
+  font-family: Inria Sans;
+  font-weight: 700;
+  margin-bottom: var(--dl-space-space-halfunit);
+  text-transform: capitalize;
+}
 
-
-
+.header-navlink {
+  width: 136px;
+  height: 44px;
+  font-style: normal;
+  font-family: Inria Sans;
+  font-weight: 700;
+  border-radius: 25px;
+  text-decoration: none;
+  background-color: var(--dl-color-primary-700);
+}
 
 
 

@@ -24,17 +24,27 @@
       function criarConta() {
         var email = document.getElementById("criar_email").value;
         var password = document.getElementById("criar_senha").value;
-  
+      
         // Cria uma nova conta de usuário no Firebase Auth
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .then(function(userCredential) {
             var user = userCredential.user;
-            window.location.href="/login.html";
-            //document.getElementById("createAccountStatus").innerHTML = "Conta criada: " + user.email;
+            
+            // Envie um e-mail de verificação
+            user.sendEmailVerification()
+              .then(function() {
+                // E-mail de verificação enviado com sucesso
+                alert("Conta criada com sucesso. Verifique seu e-mail para ativar sua conta.");
+                window.location.href = "../pages/login.html";
+              })
+              .catch(function(error) {
+                // Trate erros de envio de e-mail de verificação aqui
+                console.error("Erro ao enviar e-mail de verificação:", error);
+              });
           })
           .catch(function(error) {
             var errorMessage = error.message;
-            alert("Error ao criar a sua conta")
+            alert("Erro ao criar a sua conta: " + errorMessage);
             document.getElementById("createAccountStatus").innerHTML = "Erro ao criar conta: " + errorMessage;
           });
       }

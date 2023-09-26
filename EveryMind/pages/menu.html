@@ -7,6 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="utf-8" />
   <meta property="twitter:card" content="summary_large_image" />
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyB41DJ0DWEoJb8P5OQPIYTFHO9g4JHAQo8",
+      authDomain: "everymind-proto.firebaseapp.com",
+      projectId: "everymind-proto",
+      storageBucket: "everymind-proto.appspot.com",
+      messagingSenderId: "158822858584",
+      appId: "1:158822858584:web:7bce6a8c8cb22c267f2f2d"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    
+  </script>
 
   <style data-tag="reset-style-sheet">
     html {
@@ -128,13 +143,28 @@
 </head>
 
 
+
   <script>
+    
     function abrirFormulario() {
     // Aqui, vagaKey é a chave única da vaga que o usuário deseja abrir
   
     // Redirecionar o usuário para uma nova página com os detalhes da vaga
-    window.location.href = "/pages/cadastro-usuario.html";
-  }</script>
+    window.location.href = "../pages/cadastro-usuario.html";
+
+
+    }
+
+    function logout() {
+      firebase.auth().signOut().then(() => {
+          // Logout bem-sucedido
+          window.location.href = "../pages/login.html"; // Redireciona para a página de login após o logout
+      }).catch(()=> {
+          // Tratar erros de logout, se necessário
+          console.error("Erro durante o logout:", error);
+      });
+  }
+</script>
 
 <body>
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
@@ -151,21 +181,29 @@
     </div>
   </div>
   <div>
-    <link href="../style/menu.css" rel="stylesheet" />
-    <div class="menu-container">
-      <div class="header-login-container header-login-root-class-name1">
+    <div>
+      <link href="../style/menu.css" rel="stylesheet" />
+      <div class="header-login-container">
         <header data-role="Header" class="header-login-header">
           <div class="header-login-container1">
-            <a href="menu.html" class="header-login-navlink">
+            <a href="../pages/menu.html" class="header-login-navlink">
               <img
                 alt="image"
-                src="/public/everymind-png-200h.png"
+                src="../public/everymind-png-200h.png"
                 class="header-login-image"
               />
             </a>
           </div>
+          <button type="button" onclick="logout()" class="header-login-button button">
+            Logout
+          </button>
         </header>
         <form class="header-login-form"></form>
+      </div>
+    </div>
+        </header>
+        <form class="header-login-form"></form>
+        
       </div>
       <div class="menu-banner">
         <h2 class="menu-text">
@@ -271,9 +309,8 @@
               <h2 class="card-fit-cultural-text"><span>Inscrição</span></h2>
               <span>
                 <span>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                  lorem lorem, malesuada in metus vitae, scelerisque accumsan
-                  ipsum.
+                  Queremos conhecer você! Ao cadastrar o currículo informe da forma mais detalhada possível a sua trajetória profissional,
+                   as realizações mais relevantes.
                 </span>
               </span>
             </div>
@@ -290,9 +327,7 @@
               <h2 class="card-teste-online-text"><span>Testes Online</span></h2>
               <span>
                 <span>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                  lorem lorem, malesuada in metus vitae, scelerisque accumsan
-                  ipsum.
+                  Testes genéricos, de lógica ou línguas, geram vieses nos resultados que impedem detectar se o candidato já chegaria produzindo na vaga.
                 </span>
               </span>
             </div>
@@ -307,9 +342,7 @@
               <h2 class="card-grupo-text"><span>Entrevista Dinamica</span></h2>
               <span>
                 <span>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                  lorem lorem, malesuada in metus vitae, scelerisque accumsan
-                  ipsum.
+                  Essa fase das entrevistas de emprego tem como objetivo conhecer melhor os candidatos e ver como podem trabalhar no ambiente em questão. 
                 </span>
               </span>
             </div>
@@ -324,9 +357,7 @@
               <h2 class="card-admissao-text"><span>Admissão da Vaga</span></h2>
               <span>
                 <span>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                  lorem lorem, malesuada in metus vitae, scelerisque accumsan
-                  ipsum.
+                  Processo para formalizar a contratação de um colaborador e tem a finalidade de autorizar a prestação de serviços via pessoa física ou pessoa jurídica.
                 </span>
               </span>
             </div>

@@ -208,10 +208,10 @@
 
           if (user.email.endsWith('@everymind.com.br')) {
             // Redireciona para a página de administração
-            window.location.href = "/pages/menu-admin.html?uid=" + uid;
+            window.location.href = "../pages/menu-admin.html?uid=" + uid;
           } else {
             // Redireciona para a página do cliente normal
-            window.location.href = "/pages/menu.html?uid=" + uid;
+            window.location.href = "../pages/menu.html?uid=" + uid;
             //document.getElementById("loginStatus").innerHTML = "Usuário conectado: " + user.email;
           }
         })
