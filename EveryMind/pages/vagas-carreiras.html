@@ -117,8 +117,8 @@
                             <strong>Salário:</strong> ${vaga.salario}<br><br>
                             <strong>Exclusivas para Pessoas com Deficiências:</strong> ${vaga.deficiencia ? "Sim" : "Não"}<br><br>
                             <strong>Exclusivas para Etnia Social:</strong> ${vaga.etnia}<br><br>
-                            <button class="button_Excluir" onclick="excluirVaga('${childSnapshot.key}')">Excluir</button>
-                            <button class="button_Alterar" onclick="abrirFormularioAlteracao('${childSnapshot.key}')">Alterar</button>
+                            <button class="button_Abrir" onclick="abrirVaga('${childSnapshot.key}')">Abrir</button>
+
                         `;
 
               listaCompletaResultado.appendChild(card);
@@ -135,8 +135,8 @@
                             <strong>Salário:</strong> ${vaga.salario}<br><br>
                             <strong>Exclusivas para Pessoas com Deficiências:</strong> ${vaga.deficiencia ? "Sim" : "Não"}<br><br>
                             <strong>Exclusivas para Etnia Social:</strong> ${vaga.etnia}<br><br>
-                            <button class="button_Excluir" onclick="excluirVaga('${childSnapshot.key}')">Excluir</button>
-                            <button class="button_Alterar" onclick="abrirFormularioAlteracao('${childSnapshot.key}')">Alterar</button>
+                            <button class="button_Abrir" onclick="abrirVaga('${childSnapshot.key}')">Abrir</button>
+
                         `;
 
               resultadoPesquisa.appendChild(card);
