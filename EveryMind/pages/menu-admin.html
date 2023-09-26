@@ -8,6 +8,22 @@
   <meta charset="utf-8" />
   <meta property="twitter:card" content="summary_large_image" />
 
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyB41DJ0DWEoJb8P5OQPIYTFHO9g4JHAQo8",
+      authDomain: "everymind-proto.firebaseapp.com",
+      projectId: "everymind-proto",
+      storageBucket: "everymind-proto.appspot.com",
+      messagingSenderId: "158822858584",
+      appId: "1:158822858584:web:7bce6a8c8cb22c267f2f2d"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    
+  </script>
+
   <style data-tag="reset-style-sheet">
     html {
       line-height: 1.15;
@@ -127,7 +143,17 @@
       // Aqui, vagaKey é a chave única da vaga que o usuário deseja abrir
     
       // Redirecionar o usuário para uma nova página com os detalhes da vaga
-      window.location.href = "/pages/ver-usuario.html";
+      window.location.href = "../pages/ver-usuario.html";
+    }
+
+    function logout() {
+      firebase.auth().signOut().then(() => {
+          // Logout bem-sucedido
+          window.location.href = "../pages/login.html"; // Redireciona para a página de login após o logout
+      }).catch(()=> {
+          // Tratar erros de logout, se necessário
+          console.error("Erro durante o logout:", error);
+      });
     }
     </script>
 
@@ -149,6 +175,9 @@
           <div class="header-login-container1">
             <img alt="image" src="/public/everymind-png-200h.png" class="header-login-image" />
           </div>
+          <button type="button" onclick="logout()" class="header-login-button button">
+            Logout
+          </button>
         </header>
         <form class="header-login-form"></form>
       </div>
