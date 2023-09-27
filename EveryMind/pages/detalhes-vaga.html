@@ -115,7 +115,14 @@
         console.error("Erro ao recuperar detalhes da vaga:", error);
       });
 
+      function abrirCV() {
+    // Aqui, vagaKey é a chave única da vaga que o usuário deseja abrir
+  
+    // Redirecionar o usuário para uma nova página com os detalhes da vaga
+    window.location.href = "../pages/cadastro-usuario.html";
 
+
+    }
 
 
 
@@ -242,7 +249,7 @@
 
 <body>
   <div>
-    <link href="../style/vagas-carreiras-admin.css" rel="stylesheet" />
+    <link href="../style/vagas-carreiras.css" rel="stylesheet" />
     <div class="usuarios-carreiras-admin-container">
       <div class="header-admin-container header-admin-root-class-name">
         <header data-role="Header" class="header-admin-header">
@@ -251,19 +258,7 @@
               <img alt="image" src="../public/everymind-png-200h.png" class="header-admin-image" />
             </a>
           </div>
-          <header data-role="Header" class="header-admin-header1">
-            <nav class="navigation-links-admin-nav navigation-links-admin-root-class-name">
-              <a href="./cadastro-vagas.html" class="navigation-links-admin-navlink">
-                <span>CADASTRAR</span>
-              </a>
-              <a href="./ver-usuario.html" class="navigation-links-admin-text1">
-                <span>VER USUARIO</span>
-              </a>
-              <a href="./menu-admin.html" class="navigation-links-admin-navlink">
-                <span>CARREIRAS</span>
-              </a>
-            </nav>
-          </header>
+        
         </header>
         <form class="header-admin-form"></form>
       </div>
@@ -280,7 +275,7 @@
               <p>Exclusivas para Pessoas com Deficiências: <span id="deficiencia"></span></p>
               <p>Exclusivas para Etnia Social: <span id="etnia"></span></p>
 
-              <button class="login-button button"> Enviar o Cúrriculo</button>
+              <button class="login-button button" onclick="abrirCV()"> Cadastrar Currículo</button>
           </div>
           </div>
         </div>
