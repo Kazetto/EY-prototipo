@@ -30,8 +30,120 @@
         var database = firebase.database();
 
         // Função para salvar uma vaga no Firebase
+        var competenciasAdicionadas = []; // Array para armazenar as competências adicionadas
+        var locaisAdicionados = []; // Array para armazenar as local da vagas adicionadas
+
+        // Função para adicionar local
+        // Função para adicionar local da vaga
+        function adicionarLocal() {
+            var localInput = document.getElementById("local");
+            var local = localInput.value.trim();
+
+            if (local !== "" && locaisAdicionados.length < 8 && !locaisAdicionados.includes(local)) {
+                locaisAdicionados.push(local);
+                localInput.value = "";
+
+                atualizarListaLocais();
+            } else if (locaisAdicionados.length >= 8) {
+                alert("Você já adicionou 8 locais diferentes");
+            } else if (local === "") {
+                alert("Digite o local da vaga");
+            } else if (locaisAdicionados.includes(local)) {
+                alert("Esse local já foi adicionado");
+            }
+        }
+
+        function removerLocal(local) {
+            var index = locaisAdicionados.indexOf(local);
+            if (index !== -1) {
+                locaisAdicionados.splice(index, 1); // Remove o local do array
+                atualizarListaLocais(); // Atualiza a lista de locais após a remoção
+            }
+        }
+
+        // Função para atualizar a lista de locais exibidos
+        function atualizarListaLocais() {
+            var locaisList = document.getElementById("locais-list");
+            locaisList.innerHTML = "";
+
+            locaisAdicionados.forEach(function (local) {
+                var localItem = document.createElement("div");
+                localItem.classList.add("local-item"); // Adicione uma classe CSS para estilização
+
+                var localName = document.createElement("span");
+                localName.textContent = local;
+
+                var removeButton = document.createElement("button");
+                removeButton.textContent = "X";
+                removeButton.classList.add("remove-button"); // Adicione uma classe CSS para estilizar o botão
+                removeButton.addEventListener("click", function () {
+                    removerLocal(local);
+                });
+
+                localItem.appendChild(localName);
+                localItem.appendChild(removeButton);
+                locaisList.appendChild(localItem);
+            });
+        }
+
+
+
+        // Função para adicionar competência
+        function adicionarCompetencia() {
+            var competenciaInput = document.getElementById("competencias");
+            var competencia = competenciaInput.value.trim();
+
+            if (competencia !== "" && competenciasAdicionadas.length < 8 && !competenciasAdicionadas.includes(competencia)) {
+                competenciasAdicionadas.push(competencia);
+                competenciaInput.value = "";
+
+                atualizarListaCompetencias();
+            } else if (competenciasAdicionadas.length >= 8) {
+                alert("Você já colocou as 8 competências");
+            } else if (competencia === "") {
+                alert("Digite a competência");
+            } else if (competenciasAdicionadas.includes(competencia)) {
+                alert("Essa competência já foi adicionada");
+            }
+        }
+
+        // Função para remover uma competência da lista
+        function removerCompetencia(competencia) {
+            var index = competenciasAdicionadas.indexOf(competencia);
+            if (index !== -1) {
+                competenciasAdicionadas.splice(index, 1);
+                atualizarListaCompetencias();
+            }
+        }
+
+        // Função para atualizar a lista de competências exibidas
+        function atualizarListaCompetencias() {
+            var competenciasList = document.getElementById("competencias-list");
+            competenciasList.innerHTML = "";
+
+            competenciasAdicionadas.forEach(function (competencia) {
+                var competenciaElement = document.createElement("div");
+                competenciaElement.className = "competencia-item";
+
+                var competenciaText = document.createElement("span");
+                competenciaText.textContent = competencia;
+
+                var deleteButton = document.createElement("button");
+                deleteButton.textContent = "X";
+                deleteButton.className = "delete-button";
+
+                deleteButton.addEventListener("click", function () {
+                    removerCompetencia(competencia);
+                });
+
+                competenciaElement.appendChild(competenciaText);
+                competenciaElement.appendChild(deleteButton);
+
+                competenciasList.appendChild(competenciaElement);
+            });
+        }
+        // Função para cadastrar vaga
         function cadastrarVaga() {
-            alert("Vaga adicionado com sucesso!!!");
             var cargo = document.getElementById("cargo").value;
             var empresa = document.getElementById("empresa").value;
             var tipoVaga = document.getElementById("tipoVaga").value;
@@ -40,9 +152,6 @@
             var deficiencia = document.getElementById("deficiencia").checked;
             var etnia = document.getElementById("etnia").value;
             var sexo = document.getElementById("sexo").value;
-
-
-
 
             // Obtém uma referência à lista de vagas
             var vagasRef = database.ref("vagas");
@@ -68,9 +177,10 @@
                     salario: salario,
                     deficiencia: deficiencia,
                     etnia: etnia,
-                    sexo: sexo
+                    sexo: sexo,
+                    competencias: competenciasAdicionadas,
+                    local: locaisAdicionados // Inclui as competências na vaga
                 };
-
 
                 // Salva a vaga no Firebase com o novo ID
                 vagasRef.push(vaga);
@@ -84,34 +194,18 @@
                 document.getElementById("deficiencia").checked = false;
                 document.getElementById("etnia").value = "";
                 document.getElementById("sexo").value = "";
-                window.location.href =
-                    "../pages/vagas-carreiras-admin.html"; // Define um valor padrão para cores raciais
+
+                // Limpa a lista de competências adicionadas
+                competenciasAdicionadas = [];
+                locaisAdicionados = [];
+                atualizarListaCompetencias();
+                atualizarListaLocais();
+
+                // Redireciona para a página de listagem de vagas
+                window.location.href = "../pages/vagas-carreiras-admin.html";
             });
         }
-        // Função para listar e exibir vagas
-        function listarVagas() {
-            var vagasRef = database.ref("vagas");
 
-            vagasRef.on("value", function (snapshot) {
-                var lista = document.getElementById("vaga-list");
-                lista.innerHTML = "";
-
-                snapshot.forEach(function (childSnapshot) {
-                    var vaga = childSnapshot.val();
-                    var li = document.createElement("li");
-                    li.innerHTML = "<strong>Cargo:</strong> " + vaga.cargo +
-                        "<br><strong>Empresa:</strong> " + vaga.empresa +
-                        "<br><strong>Tipo de Vaga:</strong> " + vaga.tipoVaga +
-                        "<br><strong>Descrição:</strong> " + vaga.descricao +
-                        "<br><strong>Salário:</strong> " + vaga.salario +
-                        "<br><strong>Pessoas com Deficiências:</strong> " + (vaga.deficiencia ? "Sim" :
-                            "Não") +
-                        "<br><strong>Etnia Social:</strong> " + vaga.etnia +
-                        "<br><strong>Sexo:</strong> " + vaga.sexo;
-                    lista.appendChild(li);
-                });
-            });
-        }
     </script>
 
     <style data-tag="reset-style-sheet">
@@ -256,6 +350,11 @@
                     <span for="empresa" class="cadastro-vagas-text1">Nome da Empresa:</span>
                     <input class="cadastro-vagas-textinput input" type="text" id="empresa" required><br>
 
+                    <span for="locais" class="cadastro-vagas-text1">Local: </span>
+                    <input type="text" id="local" class="cadastro-vagas-textinput input"
+                        placeholder="Digite o local da vaga">
+                    <button class="cadastro-vagas-button button" onclick="adicionarLocal()">Adicionar Local</button>
+                    <div id="locais-list"></div>
 
                     <span for="tipoVaga" class="cadastro-vagas-text5">Tipo de vaga</span>
                     <select id="tipoVaga" class="cadastro-vagas-select">
@@ -279,8 +378,15 @@
                     <div class="cadastro-vagas-container2">
                         <input type="checkbox" id="deficiencia"><br>
                         <span class="cadastro-vagas-text4">Exclusivo para Pessoas com deficiência</span>
-                    </div>
 
+                    </div class=" cadastro-vagas-pricing-card">
+                    <div>
+                        <!-- Seu código HTML existente vai aqui -->
+                        <span for="competencias" class="cadastro-vagas-text1">Competências (até 8):</span>
+                        <input class="cadastro-vagas-textinput input" type="text" id="competencias" required>
+                        <button class="cadastro-vagas-button button" onclick="adicionarCompetencia()">Adicionar</button>
+                        <div id="competencias-list"></div>
+                    </div>
 
                     <span for="etnia" class="cadastro-vagas-text5">Etinia Social:</span>
                     <select id="etnia" class="cadastro-vagas-select">

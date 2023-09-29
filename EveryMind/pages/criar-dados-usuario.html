@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Criar Dados do Usuário</title>
+  <meta property="og:title" content="Cadastro - everymind-prototipo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta property="twitter:card" content="summary_large_image" />
+
+  <!-- Inclua o script do Firebase Authentication -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+
+  <!-- Em seguida, inclua o script do Firebase App (você já fez isso) -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-storage.js"></script>
+
+  <!-- ... o restante do seu código ... -->
+
+
+  <script>
+
+    var firebaseConfig = {
+      apiKey: "AIzaSyB41DJ0DWEoJb8P5OQPIYTFHO9g4JHAQo8",
+      authDomain: "everymind-proto.firebaseapp.com",
+      databaseURL: "https://everymind-proto-default-rtdb.firebaseio.com",
+      projectId: "everymind-proto",
+      storageBucket: "everymind-proto.appspot.com",
+      messagingSenderId: "158822858584",
+      appId: "1:158822858584:web:7bce6a8c8cb22c267f2f2d",
+      measurementId: "G-PK8S2VSYRL"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    // Referência ao banco de dados do Firebase
+    var database = firebase.database();
+
+  </script>
+
+
+
+  <style data-tag="reset-style-sheet">
+    html {
+      line-height: 1.15;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      border-width: 0;
+      border-style: solid;
+    }
+
+    p,
+    li,
+    ul,
+    pre,
+    div,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    figure,
+    blockquote,
+    figcaption {
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      background-color: transparent;
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      font-family: inherit;
+      font-size: 100%;
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    button,
+    select {
+      text-transform: none;
+    }
+
+    button,
+    [type="button"],
+    [type="reset"],
+    [type="submit"] {
+      -webkit-appearance: button;
+    }
+
+    button::-moz-focus-inner,
+    [type="button"]::-moz-focus-inner,
+    [type="reset"]::-moz-focus-inner,
+    [type="submit"]::-moz-focus-inner {
+      border-style: none;
+      padding: 0;
+    }
+
+    button:-moz-focus,
+    [type="button"]:-moz-focus,
+    [type="reset"]:-moz-focus,
+    [type="submit"]:-moz-focus {
+      outline: 1px dotted ButtonText;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    input {
+      padding: 2px 4px;
+    }
+
+    img {
+      display: block;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+  </style>
+  <style data-tag="default-style-sheet">
+    html {
+      font-family: Inter;
+      font-size: 16px;
+    }
+
+    body {
+      font-weight: 400;
+      font-style: normal;
+      text-decoration: none;
+      text-transform: none;
+      letter-spacing: normal;
+      line-height: 1.15;
+      color: var(--dl-color-gray-black);
+      background-color: var(--dl-color-gray-white);
+
+    }
+  </style>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+    data-tag="font" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap"
+    data-tag="font" />
+  <link rel="stylesheet" href="../style/style.css" />
+</head>
+
+<body>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
+
+
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <div>
+    <link href="../style/criar-dados-usuario.css" rel="stylesheet" />
+
+    <script src="../javascript/criar-dados-usuario.js"></script>
+
+    <div class="cadastro-container">
+      <div class="header-login-container header-login-root-class-name2">
+        <header data-role="Header" class="header-login-header">
+          <div class="header-login-container1">
+            <img alt="image" src="../public/everymind-png-200h.png" class="header-login-image" />
+          </div>
+        </header>
+        <form class="header-login-form"></form>
+      </div>
+      <div class="cadastro-pricing">
+        <div class="cadastro-pricing-card">
+          <img alt="image" src="../public/2323-fotor-bg-remover-20230825105844-200h.png" class="cadastro-image" />
+
+          <!-- Informações Pessoais -->
+          <h2>Informações Pessoais</h2>
+          <label for="nome">Nome completo:</label>
+          <input type="text" id="nome" required>
+
+          <label for="endereco">Endereço:</label>
+          <input type="text" id="endereco" required>
+
+          <label for="telefone">Telefone:</label>
+          <input type="tel" id="telefone" required>
+
+
+          <!-- Experiência Profissional -->
+          <h2>Experiência Profissional</h2>
+          <label for="empresa">Empresa:</label>
+          <input type="text" id="empresa" required>
+
+          <label for="cargo">Cargo:</label>
+          <input type="text" id="cargo" required>
+
+          <label for="data-inicio">Data de início:</label>
+          <input type="date" id="data-inicio" required>
+
+          <label for="data-fim">Data de término:</label>
+          <input type="date" id="data-fim" required>
+
+          <!-- Experiência Profissional -->
+          <h2>Gênero</h2>
+          <label for="genero">Selecione seu gênero:</label>
+          <select id="genero" name="genero">
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+            <option value="outro">Prefiro não responder</option>
+          </select>
+
+          <h2>Deficiência</h2>
+          <label for="deficiencia">Você possui alguma deficiência?</label>
+          <select id="deficiencia" name="deficiencia">
+            <option value="nao">Não</option>
+            <option value="sim">Sim</option>
+          </select>
+
+          <!-- Tipos de Deficiência (somente se "Sim" for selecionado) -->
+          <div id="tipos-deficiencia" style="display: none;">
+            <label for="tipo-deficiencia">Se sim, selecione o tipo de deficiência:</label>
+            <select id="tipo-deficiencia" name="tipo-deficiencia">
+              <option value="fisica">Deficiência Física</option>
+              <option value="visual">Deficiência Visual</option>
+              <option value="auditiva">Deficiência Auditiva</option>
+              <option value="intelectual">Deficiência Intelectual</option>
+              <option value="outra">Outra</option>
+            </select>
+          </div>
+
+
+          <!-- Educação -->
+          <h2>Educação</h2>
+          <div id="educacao-container">
+            <!-- Primeiro campo de educação -->
+            <div class="educacao-item">
+              <label for="instituicao">Instituição de ensino:</label>
+              <input type="text" class="instituicao" required>
+
+              <label for="grau">Grau acadêmico:</label>
+              <input type="text" class="grau" required>
+
+              <label for="data-formatura">Data de formatura:</label>
+              <input type="date" class="data-formatura" required>
+
+              <button class="remover-educacao">Remover</button>
+            </div>
+          </div>
+          <button id="adicionar-educacao">Adicionar Educação</button>
+
+          <!-- Habilidades Técnicas -->
+          <h2>Habilidades Técnicas</h2>
+          <div id="habilidades-container">
+            <!-- Primeiro campo de habilidades técnicas -->
+            <div class="habilidades-item">
+              <label for="habilidades">Habilidades:</label>
+              <input type="text" class="habilidades" required>
+
+              <button class="remover-habilidades">Remover</button>
+            </div>
+          </div>
+          <button id="adicionar-habilidades">Adicionar Habilidades</button>
+
+          <!-- Idiomas -->
+          <h2>Idiomas</h2>
+          <div id="idiomas-container">
+            <!-- Primeiro campo de idiomas -->
+            <div class="idiomas-item">
+              <label for="idiomas">Idiomas:</label>
+              <input type="text" class="idiomas" required>
+
+              <button class="remover-idiomas">Remover</button>
+            </div>
+          </div>
+          <button id="adicionar-idiomas">Adicionar Idiomas</button>
+
+          <!-- Certificações e Treinamento -->
+          <h2>Certificações e Treinamento</h2>
+          <div id="certificacoes-container">
+            <!-- Primeiro campo de certificações e treinamento -->
+            <div class="certificacoes-item">
+              <label for="certificacoes">Certificações:</label>
+              <input type="text" class="certificacoes" required>
+
+              <label for="treinamento">Treinamento:</label>
+              <input type="text" class="treinamento" required>
+
+              <button class="remover-certificacoes">Remover</button>
+            </div>
+          </div>
+          <button id="adicionar-certificacoes">Adicionar Certificações</button>
+
+          <!-- Carta de Apresentação ou Resumo -->
+          <h2>Carta de Apresentação ou Resumo</h2>
+          <label for="carta-apresentacao">Envie sua carta de apresentação ou resumo:</label>
+          <input type="file" id="carta-apresentacao" accept=".pdf, .doc, .docx">
+
+          <button id="salvar-dados">Salvar Dados</button>
+
+
+
+
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>

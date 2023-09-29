@@ -35,6 +35,11 @@
   object-fit: cover;
   text-decoration: none;
 }
+.header-login-button {
+  font-style: normal;
+  font-weight: 900;
+  background-color: #ffffff;
+}
 .header-login-form {
   width: 100%;
   height: 8px;
@@ -42,27 +47,9 @@
   background-image: linear-gradient(90deg, rgb(12, 162, 6) 1.00%,rgb(0, 181, 222) 100.00%);
 }
 
-.logout-text {
-  color: rgb(0, 0, 0);
-  font-size: 2rem;
-  align-self: stretch;
-  font-style: normal;
-  font-family: Inria Sans;
-  font-weight: 700;
-  margin-bottom: var(--dl-space-space-halfunit);
-  text-transform: capitalize;
-}
 
-.header-navlink {
-  width: 136px;
-  height: 44px;
-  font-style: normal;
-  font-family: Inria Sans;
-  font-weight: 700;
-  border-radius: 25px;
-  text-decoration: none;
-  background-color: var(--dl-color-primary-700);
-}
+
+
 
 
 
@@ -316,6 +303,7 @@
   width: 100%;
   align-self: center;
 }
+
 
 
 
@@ -794,6 +782,10 @@
   text-align: center;
   margin-bottom: var(--dl-space-space-twounits);
 }
+.menu-button {
+  width: 141px;
+  height: 61px;
+}
 .menu-banner2 {
   width: 100%;
   display: flex;
@@ -869,7 +861,7 @@
   font-weight: 500;
   margin-bottom: var(--dl-space-space-unit);
 }
-.menu-button {
+.menu-button1 {
   align-self: center;
   transition: 0.3s;
   padding-top: var(--dl-space-space-unit);
@@ -877,7 +869,7 @@
   padding-right: var(--dl-space-space-twounits);
   padding-bottom: var(--dl-space-space-unit);
 }
-.menu-button:hover {
+.menu-button1:hover {
   transform: scale(1.02);
 }
 .menu-step5 {
@@ -928,7 +920,7 @@
   font-weight: 500;
   margin-bottom: var(--dl-space-space-unit);
 }
-.menu-button1 {
+.menu-button2 {
   align-self: center;
   transition: 0.3s;
   padding-top: var(--dl-space-space-unit);
@@ -936,7 +928,7 @@
   padding-right: var(--dl-space-space-twounits);
   padding-bottom: var(--dl-space-space-unit);
 }
-.menu-button1:hover {
+.menu-button2:hover {
   transform: scale(1.02);
 }
 .menu-step6 {
@@ -987,7 +979,7 @@
   font-weight: 500;
   margin-bottom: var(--dl-space-space-unit);
 }
-.menu-button2 {
+.menu-button3 {
   align-self: center;
   transition: 0.3s;
   padding-top: var(--dl-space-space-unit);
@@ -995,7 +987,7 @@
   padding-right: var(--dl-space-space-twounits);
   padding-bottom: var(--dl-space-space-unit);
 }
-.menu-button2:hover {
+.menu-button3:hover {
   transform: scale(1.02);
 }
 .menu-step7 {
@@ -1046,7 +1038,7 @@
   font-weight: 500;
   margin-bottom: var(--dl-space-space-unit);
 }
-.menu-button3 {
+.menu-button4 {
   align-self: center;
   transition: 0.3s;
   padding-top: var(--dl-space-space-unit);
@@ -1054,7 +1046,7 @@
   padding-right: var(--dl-space-space-twounits);
   padding-bottom: var(--dl-space-space-unit);
 }
-.menu-button3:hover {
+.menu-button4:hover {
   transform: scale(1.02);
 }
 @media(max-width: 1600px) {

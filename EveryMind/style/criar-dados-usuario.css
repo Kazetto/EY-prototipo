@@ -39,52 +39,7 @@
 }
 
 
-#competencias-list span {
-  margin-top: 10px;
-  display: inline-block;
-  padding: 5px 10px;
-  background-color: #f2f2f2;
-  border-radius: 20px; /* Adicione este estilo para a borda redonda */
-  margin-right: 5px;
-  margin-bottom: 5px;
-}
 
-
-.competencia-item {
-  display: flex;
-  align-items: center;
-  margin: 5px;
-}
-
-.delete-button {
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  padding: 4px 8px;
-  margin-left: 5px;
-  cursor: pointer;
-}
-
-#locais-list span {
-  margin-top: 10px;
-  display: inline-block;
-  padding: 5px 10px;
-  background-color: #f2f2f2;
-  border-radius: 20px; /* Adicione este estilo para a borda redonda */
-  margin-right: 5px;
-  margin-bottom: 5px;
-}
-
-.remove-button {
-  background-color: red; /* Define a cor de fundo vermelha */
-  color: white; /* Define a cor do texto como branco */
-  border: none; /* Remove a borda do botão */
-  cursor: pointer; /* Mude o cursor ao passar o mouse */
-  padding: 5px 10px; /* Adicione um espaçamento interno ao botão */
-  margin-left: 5px; /* Adicione um espaçamento à esquerda do botão */
-  border-radius: 50%; /* Adicione uma borda arredondada para criar um botão circular */
-}
 
 
 @media(max-width: 767px) {
@@ -166,13 +121,6 @@
 
 
 
-
-.footer-root-class-name9 {
-  width: 100%;
-  align-self: center;
-}
-
-
 @media(max-width: 767px) {
   .footer-footer {
     padding-left: var(--dl-space-space-twounits);
@@ -196,7 +144,7 @@
   }
 }
 
-.cadastro-vagas-container {
+.cadastro-container {
   width: 100%;
   display: flex;
   overflow: auto;
@@ -204,21 +152,24 @@
   align-items: center;
   flex-direction: column;
 }
-.cadastro-vagas-container1 {
+.cadastro-pricing {
+  flex: 1;
   width: 100%;
-  height: auto;
+  height: var(--dl-size-size-maxwidth);
   display: flex;
-  align-items: flex-start;
+  align-self: center;
   background-size: cover;
   justify-content: center;
-  background-image: linear-gradient(90deg, rgba(189, 195, 199, 0.8) 1.00%,rgb(44, 62, 80) 100.00%),url("https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDQ0fHx3b3JraW5nfGVufDB8fHx8MTY5Mzc3NjgzNHww&ixlib=rb-4.0.3&w=1500");
+  background-image: linear-gradient(90deg, rgb(189, 195, 199) 0.00%,rgba(44, 62, 80, 0.2) 100.00%),url("https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDQ0fHx3b3JraW5nfGVufDB8fHx8MTY5MzIyNTkyMXww&ixlib=rb-4.0.3&w=1500");
+  background-position: center;
 }
-.cadastro-vagas-pricing-card {
-  width: 100%;
-  margin: var(--dl-space-space-sixunits);
+.cadastro-pricing-card {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: auto;
   display: flex;
   padding: var(--dl-space-space-twounits);
-  max-width: 1000px;
+  max-width: 75%;
   align-self: center;
   min-height: 500px;
   transition: 0.3s;
@@ -230,13 +181,13 @@
   background-color: rgba(46, 46, 56, 0.88);
 }
 
-.cadastro-vagas-image {
+.cadastro-image {
   width: 61px;
   height: 76px;
   align-self: flex-end;
   object-fit: cover;
 }
-.cadastro-vagas-text {
+.cadastro-text {
   color: rgb(255, 255, 255);
   font-size: 2rem;
   align-self: center;
@@ -246,107 +197,162 @@
   margin-bottom: var(--dl-space-space-halfunit);
   text-transform: capitalize;
 }
-.cadastro-vagas-form {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-}
-.cadastro-vagas-text1 {
+.cadastro-text1 {
   color: rgb(255, 255, 255);
-  margin: var(--dl-space-space-halfunit);
   font-size: 1.5rem;
   align-self: stretch;
   font-style: normal;
   font-family: Inria Sans;
   font-weight: 700;
+  margin-bottom: var(--dl-space-space-halfunit);
   text-transform: capitalize;
 }
-.cadastro-vagas-textinput {
+.cadastro-textinput {
   flex: 0;
-  width: 80%;
-  margin: var(--dl-space-space-halfunit);
-  align-self: flex-start;
+  width: 400px;
+  align-self: center;
   border-color: var(--dl-color-primary-100);
   border-width: 2px;
   border-radius: 15px;
 }
-.cadastro-vagas-text2 {
+.cadastro-text2 {
   color: rgb(255, 255, 255);
-  margin: var(--dl-space-space-halfunit);
   font-size: 1.5rem;
   align-self: stretch;
   font-style: normal;
   font-family: Inria Sans;
   font-weight: 700;
+  margin-bottom: var(--dl-space-space-halfunit);
   text-transform: capitalize;
 }
-.cadastro-vagas-textarea {
-  width: 80%;
-  margin: var(--dl-space-space-halfunit);
-  align-self: flex-start;
+.cadastro-textinput1 {
+  flex: 0;
+  width: 400px;
+  align-self: center;
+  border-color: var(--dl-color-primary-100);
+  border-width: 2px;
+  border-radius: 15px;
 }
-.cadastro-vagas-text3 {
-  color: rgb(255, 255, 255);
-  margin: var(--dl-space-space-halfunit);
-  font-size: 1.5rem;
-  align-self: stretch;
-  font-style: normal;
-  font-family: Inria Sans;
-  font-weight: 700;
-  text-transform: capitalize;
-}
-.cadastro-vagas-container2 {
-  flex: 0 0 auto;
-  width: auto;
-  height: auto;
-  margin: var(--dl-space-space-halfunit);
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.cadastro-vagas-text4 {
-  color: rgb(255, 255, 255);
-  font-size: 1.5rem;
-  align-self: flex-start;
-  font-style: normal;
-  font-family: Inria Sans;
-  font-weight: 700;
-  margin-left: var(--dl-space-space-oneandhalfunits);
-  margin-right: var(--dl-space-space-oneandhalfunits);
-  margin-bottom: 0px;
-  text-transform: capitalize;
-}
-.cadastro-vagas-text5 {
-  color: rgb(255, 255, 255);
-  margin: var(--dl-space-space-halfunit);
-  font-size: 1.5rem;
-  align-self: stretch;
-  font-style: normal;
-  font-family: Inria Sans;
-  font-weight: 700;
-  text-transform: capitalize;
-}
-.cadastro-vagas-select {
-  width: 235px;
-  height: 31px;
-  margin: var(--dl-space-space-halfunit);
-}
-.cadastro-vagas-button {
+.cadastro-button {
   align-self: center;
   margin-top: var(--dl-space-space-twounits);
   text-decoration: none;
   background-color: var(--dl-color-primary-700);
 }
+
+
+
+
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f5f5f5;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+.cadastro-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+label {
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+select,
+input[type="date"],
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+select {
+  appearance: none;
+  padding-right: 25px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23333' d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center right 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  margin: 10px auto;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos para os campos de adicionar/remover dinamicamente */
+.add-remove-container {
+  margin-top: 20px;
+}
+
+.add-remove-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.add-remove-item input[type="text"] {
+  width: 70%;
+}
+
+.add-remove-item button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.add-remove-item button:hover {
+  background-color: #bd2130;
+}
+
+
+
+
 @media(max-width: 991px) {
-  .cadastro-vagas-pricing-card {
+  .cadastro-pricing-card {
+    margin-top: 50px;
+    margin-bottom: 50px;
     width: auto;
     max-width: 100%;
     align-items: center;
   }
 }
 @media(max-width: 767px) {
-  .cadastro-vagas-pricing-card {
+  .cadastro-pricing-card {
+    margin-top: 50px;
+    margin-bottom: 50px;
     width: 100%;
     max-width: 470px;
     align-items: center;
@@ -355,7 +361,10 @@
   }
 }
 @media(max-width: 479px) {
-  .cadastro-vagas-textinput {
+  .cadastro-textinput {
+    width: 250px;
+  }
+  .cadastro-textinput1 {
     width: 250px;
   }
 }
