@@ -86,7 +86,7 @@
 
     function abrirFormularioAlteracao(chave) {
       var usuarioRef = database.ref("usuarios/" + chave);
-      window.location.href = `/pages/alterar-usuarios.html?chave=${chave}`;
+      window.location.href = `../pages/perfil.html`;
 
       usuarioRef.once("value", function (snapshot) {
         var usuario = snapshot.val();
